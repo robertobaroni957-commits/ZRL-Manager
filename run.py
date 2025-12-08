@@ -9,12 +9,6 @@ app = create_app()
 # -----------------------------
 migrate = Migrate(app, db)
 
-# -----------------------------
-# Health check (Render)
-# -----------------------------
-@app.route("/health")
-def health():
-    return "ok", 200
 
 # -----------------------------
 # Creazione tabelle iniziali
