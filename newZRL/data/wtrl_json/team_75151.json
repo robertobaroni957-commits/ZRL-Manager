@@ -1,0 +1,227 @@
+{
+  "meta": {
+    "trc": 75151,
+    "division": "Open Emerald League Division C1",
+    "racingSeason": "2025/26",
+    "team": {
+      "tttid": 16868,
+      "teamid": 16868,
+      "name": "TEAM INOX MONSTERS",
+      "jerseyname": "Team INOX",
+      "jerseyimage": "INOX2025_thumb",
+      "recruiting": false,
+      "isdev": false
+    },
+    "nextRace": {
+      "teamstart": null,
+      "raceFormat": ""
+    },
+    "competition": {
+      "wtrlid": "ZRL",
+      "season": 17,
+      "sportsYear": 2025,
+      "roundnumber": 1,
+      "division": "C",
+      "class": "2330C10",
+      "status": "ACTIVE",
+      "registered": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "memberCount": 9,
+    "membersRemaining": 3,
+    "administrators": {
+      "registerer": {
+        "firstName": "Francesco",
+        "lastName": "Ravasi",
+        "profileId": 3617605,
+        "userId": "7af2a7ad-02d4-48a2-b213-5e284962d12a"
+      },
+      "captain": {
+        "firstName": "Francesco",
+        "lastName": "Ravasi",
+        "profileId": 3617605,
+        "userId": "7af2a7ad-02d4-48a2-b213-5e284962d12a"
+      },
+      "managers": [
+        {
+          "firstName": "Street",
+          "lastName": "Hawk",
+          "profileId": 7072727,
+          "userId": "6075bb3f-add5-45c5-a355-096458c4917a"
+        }
+      ]
+    }
+  },
+  "permissions": {
+    "id": 7072727,
+    "isAdmin": true
+  },
+  "riders": [
+    {
+      "tmuid": 395642,
+      "name": "Davide Bertin",
+      "avatar": "https://static-cdn.zwift.com/prod/profile/15fdb3b1-1257841",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "C",
+      "zftp": 3.05,
+      "zftpw": 202,
+      "zmapw": 229,
+      "zmap": 3.46,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 2,
+      "appearancesSeason": 0,
+      "profileId": 2336555,
+      "userId": "25692f3c-6f03-44f6-98ad-4042a75c4075"
+    },
+    {
+      "tmuid": 387308,
+      "name": "Matteo Marsetti",
+      "avatar": "https://static-cdn.zwift.com/prod/profile/dd1aae12-1139814",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "B",
+      "zftp": 3.37,
+      "zftpw": 294,
+      "zmapw": 354,
+      "zmap": 4.06,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 2,
+      "appearancesSeason": 2,
+      "profileId": 906430,
+      "userId": "846b52df-5380-4df3-a9b2-e3efec662830"
+    },
+    {
+      "tmuid": 387312,
+      "name": "Michael Kirscht INOX",
+      "avatar": "https://static-cdn.zwift.com/prod/profile/c1eb2505-3259865",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "C",
+      "zftp": 3.16,
+      "zftpw": 228,
+      "zmapw": 284,
+      "zmap": 3.94,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 3,
+      "appearancesSeason": 4,
+      "profileId": 7463714,
+      "userId": "ff674af9-fb20-4adf-aaec-5668ea1d4455"
+    },
+    {
+      "tmuid": 399727,
+      "name": "Michele Puri",
+      "avatar": "https://static-cdn.zwift.com/prod/profile/761ef5bc-1650164",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "C",
+      "zftp": 2.82,
+      "zftpw": 226,
+      "zmapw": 253,
+      "zmap": 3.16,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 1,
+      "appearancesSeason": 0,
+      "profileId": 1900916,
+      "userId": "f7fc88f1-7704-4876-8ec0-294559fbd2be"
+    },
+    {
+      "tmuid": 387309,
+      "name": "Roberto Sanna",
+      "avatar": "https://static-cdn.zwift.com/prod/profile/2f09740c-3228693",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "C",
+      "zftp": 3.06,
+      "zftpw": 212,
+      "zmapw": 278,
+      "zmap": 4.01,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 3,
+      "appearancesSeason": 5,
+      "profileId": 7371977,
+      "userId": "1ecf3d63-2aa0-4a1e-87e2-8c9eaa46c54f"
+    },
+    {
+      "tmuid": 395525,
+      "name": "Salvatore Matarazzo",
+      "avatar": "https://static-cdn.zwift.com/prod/profile/007a6588-482373",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "C",
+      "zftp": 2.76,
+      "zftpw": 201,
+      "zmapw": 256,
+      "zmap": 3.51,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 1,
+      "appearancesSeason": 0,
+      "profileId": 943471,
+      "userId": "bd9c1aab-9298-4b59-84a9-190408022bb2"
+    },
+    {
+      "tmuid": 395526,
+      "name": "Sandro Giusti",
+      "avatar": "/uploads/profile_picture/1727186555_FB_IMG_1727186351400.jpg",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "C",
+      "zftp": 3.27,
+      "zftpw": 245,
+      "zmapw": 302,
+      "zmap": 4.03,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 3,
+      "appearancesSeason": 0,
+      "profileId": 4583700,
+      "userId": "c4f34af6-a2de-425f-bfe6-00c7d4049591"
+    },
+    {
+      "tmuid": 387310,
+      "name": "Thomas Fischer",
+      "avatar": "https://static-cdn.zwift.com/prod/profile/1060de29-2484729",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "C",
+      "zftp": 2.32,
+      "zftpw": 206,
+      "zmapw": 298,
+      "zmap": 3.36,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 1,
+      "appearancesSeason": 3,
+      "profileId": 5023502,
+      "userId": "8a6b2a88-5ddb-402c-8b4f-7fb8d57f8794"
+    },
+    {
+      "tmuid": 387306,
+      "name": "Giovanni Lisi",
+      "avatar": "https://static-cdn.zwift.com/prod/profile/1f9effdc-1082588",
+      "memberStatus": "REMOVED-CATEGORY",
+      "signedup": false,
+      "category": "B",
+      "zftp": 3.13,
+      "zftpw": 244,
+      "zmapw": 340,
+      "zmap": 4.36,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 1,
+      "appearancesSeason": 1,
+      "profileId": 1897358,
+      "userId": "13342270-063a-45cc-a451-7e7ecb4d4cac"
+    }
+  ]
+}

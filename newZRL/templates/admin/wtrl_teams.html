@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}WTRL Teams{% endblock %}
+
+{% block content %}
+<h1>WTRL Teams Importati</h1>
+
+<!-- FORM PER IMPORT -->
+<form method="POST" action="{{ url_for('wtrl_import.import_teams_and_riders') }}">
+    <button type="submit">Importa tutti i team e riders</button>
+</form>
+
+<hr>
+
+{% if teams %}
+    <div class="teams-list">
+        {% for team in teams %}
+        <div class="team-card">
+            <h2>{{ team.name }} (TRC: {{ team.trc }})</h2>
+
+            <p>Divisione: {{ team.division }} | Stagione: {{ team.competition_season or '' }}</p>
+
+            {% if team.captain_name %}
+                <p><strong>Capitano:</strong> {{ team.captain_name }}</p>
+            {% endif %}
+
+            <h3>Riders</h3>
+
+            {% if team.wtrl_riders %}
+            <ul>
+                {% for rider in team.wtrl_riders %}
+                    <li>
+                        {{ rider.name }}
+                        {% if rider.category %} ({{ rider.category }}){% endif %}
+                        {% if rider.profile_id %} – ID: {{ rider.profile_id }}{% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <p>Nessun rider importato</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>Nessun team importato</p>
+{% endif %}
+
+{% endblock %}

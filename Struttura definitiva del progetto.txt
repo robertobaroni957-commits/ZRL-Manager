@@ -1,0 +1,20 @@
+newZRL/
+├─ __init__.py        # crea_app + db SQLAlchemy
+├─ config.py          # class Config
+├─ models/
+│  ├─ __init__.py
+│  └─ user.py         # User, Team, db
+├─ blueprints/
+│  ├─ auth/
+│  │  ├─ __init__.py
+│  │  └─ routes.py
+│  ├─ admin/
+│  │  ├─ __init__.py
+│  │  └─ routes.py
+│  └─ admin_teams/
+│     ├─ __init__.py
+│     └─ routes.py
+└─ templates/
+   ├─ auth/
+   ├─ admin/
+   └─ admin_teams/

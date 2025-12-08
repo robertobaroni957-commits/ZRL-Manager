@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Full Lineup Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4">
+
+<h1 class="mb-4">Full Lineup Report - {{ race_date }}</h1>
+
+<!-- Filtri -->
+<form method="get" class="row g-3 mb-4">
+    <div class="col-auto">
+        <select name="team_id" class="form-select">
+            <option value="">Tutti i team</option>
+            {% for t in all_teams %}
+                <option value="{{ t.id }}" {% if selected_team == t.id|string %}selected{% endif %}>{{ t.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-auto">
+        <select name="category" class="form-select">
+            <option value="">Tutte le categorie</option>
+            {% for c in all_categories %}
+                <option value="{{ c }}" {% if selected_category == c %}selected{% endif %}>{{ c }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Filtra</button>
+    </div>
+    <div class="col-auto">
+        <a href="{{ url_for('admin_bp.export_full_lineup_csv', race_date=race_date, team_id=selected_team, category=selected_category) }}" class="btn btn-success">Esporta CSV</a>
+<a href="{{ url_for('admin_bp.export_full_lineup_pdf', race_date=race_date, team_id=selected_team, category=selected_category) }}" class="btn btn-danger">Esporta PDF</a>
+    </div>
+</form>
+
+<!-- 1. Riders attivi -->
+<h2>Riders Attivi</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Email</th>
+            <th>Team</th>
+            <th>Già assegnato alla prossima gara</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in active_riders %}
+        <tr>
+            <td>{{ r.name }}</td>
+            <td>{{ r.category }}</td>
+            <td>{{ r.email }}</td>
+            <td>{{ r.teams }}</td>
+            <td>{% if r.profile_id in busy_riders %}✅{% else %}❌{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- 2. Teams -->
+<h2 class="mt-4">Teams</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Team</th>
+            <th>Capitano</th>
+            <th>Numero Rider Attivi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in teams_data %}
+        <tr>
+            <td>{{ t.name }}</td>
+            <td>{{ t.captain or '—' }}</td>
+            <td>{{ t.num_riders }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- 3. Lineup confermate -->
+<h2 class="mt-4">Lineup Confermate</h2>
+{% for team_name, riders in lineup_by_team.items() %}
+<h3>{{ team_name }}</h3>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Rider</th>
+            <th>Categoria</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in riders %}
+        <tr>
+            <td>{{ r.rider_name }}</td>
+            <td>{{ r.category }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endfor %}
+
+</body>
+</html>

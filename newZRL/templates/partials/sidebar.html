@@ -1,0 +1,81 @@
+{% set role = session.get('user_role') %}
+{% set user_id = session.get('user_id') %}
+
+{% if user_id and role %}
+{% set sidebar_items = [
+    {'label': 'Dashboard', 'endpoint': 'admin_bp.dashboard', 'icon': 'bi-bar-chart-fill'},
+    {'label': 'Report', 'endpoint': 'admin_reports.index', 'icon': 'bi-file-earmark-bar-graph', 'roles': ['admin','moderator']},
+    {'label': 'Importazioni', 'icon': 'bi-arrow-repeat', 'roles': ['admin','moderator'],
+        'children': [
+            {'label': 'Importa WTRL (Teams + Riders)', 'endpoint': 'wtrl_import.import_teams_and_riders'},
+            {'label': 'Importa Classifiche WTRL', 'endpoint': 'admin_race.import_race'},
+            {'label': 'Importa Gare WTRL', 'endpoint': 'import_wtrl_season.import_page'},
+            {'label': 'ZwiftPower', 'endpoint': 'admin_import_zwiftpower.import_zwift_team'}
+        ]
+    }
+] %}
+
+{% macro render_item(item, idx="", parent_loop_index="0") %}
+    {% if item.roles is not defined or role in item.roles %}
+        {% if item.children is defined %}
+            <div class="nav-item mt-2">
+                <a class="nav-link d-flex justify-content-between align-items-center collapsed"
+                   data-bs-toggle="collapse"
+                   href="#collapse{{ idx }}{{ parent_loop_index }}"
+                   role="button"
+                   aria-expanded="false">
+                    <span>
+                        {% if item.icon %}<i class="bi {{ item.icon }} me-2"></i>{% endif %}
+                        {{ item.label }}
+                    </span>
+                    <i class="bi bi-chevron-down small"></i>
+                </a>
+                <div class="collapse" id="collapse{{ idx }}{{ parent_loop_index }}">
+                    <div class="nav flex-column ms-3">
+                        {% for child in item.children %}
+                            {{ render_item(child, idx ~ loop.index, loop.index) }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <a href="{{ url_for(item.endpoint) }}" class="nav-link mt-2">
+                {% if item.icon %}<i class="bi {{ item.icon }} me-2"></i>{% endif %}
+                {{ item.label }}
+            </a>
+        {% endif %}
+    {% endif %}
+{% endmacro %}
+
+<aside class="sidebar d-none d-lg-block p-3 shadow-sm"
+       style="width: 240px; position: fixed; top: 0; bottom: 0; overflow-y: auto; background: #f8f9fa;">
+    <h4 class="text-center fw-bold mb-4">🏁 ZRL Manager</h4>
+    <nav class="nav flex-column">
+        {% for item in sidebar_items %}
+            {{ render_item(item, loop.index, loop.index) }}
+        {% endfor %}
+        <hr class="my-2">
+        <a href="{{ url_for('auth.logout') }}" class="nav-link text-white" style="background-color:#d32f2f;">
+            <i class="bi bi-box-arrow-right me-2"></i> Logout
+        </a>
+    </nav>
+</aside>
+
+<div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileSidebar">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold text-primary">🏁 ZRL Manager</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <nav class="nav flex-column">
+            {% for item in sidebar_items %}
+                {{ render_item(item, loop.index, loop.index) }}
+            {% endfor %}
+            <hr class="my-2">
+            <a href="{{ url_for('auth.logout') }}" class="nav-link text-white" style="background-color:#d32f2f;">
+                <i class="bi bi-box-arrow-right me-2"></i> Logout
+            </a>
+        </nav>
+    </div>
+</div>
+{% endif %}

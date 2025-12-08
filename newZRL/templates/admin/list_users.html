@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Gestione Utenti{% endblock %}
+
+{% block content %}
+<div class="page-wrapper">
+  <h1 class="mb-4">Gestione Utenti</h1>
+
+  <!-- Messaggi flash -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} d-flex align-items-center" role="alert">
+          <i class="bi bi-{{ 'check-circle' if category == 'success' else 'exclamation-triangle' if category == 'warning' else 'x-circle' if category == 'danger' else 'info-circle' }} me-2"></i>
+          {{ message|safe }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <!-- Pulsante nuovo utente -->
+  <div class="mb-3">
+    <a href="{{ url_for('admin_manage_users.create_user') }}" class="btn btn-success">
+      <i class="bi bi-person-plus"></i> Aggiungi Nuovo Utente
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-hover table-striped">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Email</th>
+            <th scope="col">Ruolo</th>
+            <th scope="col">Status</th>
+            <th scope="col">Azioni</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+          <tr>
+            <td>{{ user.profile_id }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              {% if user.role == 'admin' %}
+                <span class="badge bg-primary">Admin</span>
+              {% elif user.role == 'captain' %}
+                <span class="badge bg-success">Captain</span>
+              {% elif user.role == 'moderator' %}
+                <span class="badge bg-warning text-dark">Moderator</span>
+              {% else %}
+                <span class="badge bg-secondary">User</span>
+              {% endif %}
+            </td>
+            <td>
+              {% if user.active %}
+                <span class="badge bg-success">Attivo</span>
+              {% else %}
+                <span class="badge bg-danger">Disattivo</span>
+              {% endif %}
+            </td>
+            <td class="d-flex gap-2">
+              <!-- Modifica -->
+              <a href="{{ url_for('admin_manage_users.edit_user', profile_id=user.profile_id) }}" class="btn btn-primary btn-sm">
+                <i class="bi bi-pencil-fill"></i> Modifica
+              </a>
+
+              <!-- Elimina -->
+              <form method="POST" action="{{ url_for('admin_manage_users.delete_user', profile_id=user.profile_id) }}" onsubmit="return confirm('Sei sicuro di voler eliminare questo utente?');">
+                <button type="submit" class="btn btn-danger btn-sm">
+                  <i class="bi bi-trash-fill"></i> Elimina
+                </button>
+              </form>
+
+              <!-- Attiva/Disattiva -->
+              {% if user.active %}
+              <form method="POST" action="{{ url_for('admin_manage_users.deactivate_user', profile_id=user.profile_id) }}">
+                <button type="submit" class="btn btn-warning btn-sm">
+                  <i class="bi bi-slash-circle"></i> Disattiva
+                </button>
+              </form>
+              {% else %}
+              <form method="POST" action="{{ url_for('admin_manage_users.activate_user', profile_id=user.profile_id) }}">
+                <button type="submit" class="btn btn-success btn-sm">
+                  <i class="bi bi-check-circle"></i> Attiva
+                </button>
+              </form>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

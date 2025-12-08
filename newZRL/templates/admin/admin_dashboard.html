@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard Amministratore
+{% endblock %}
+
+{% block page_title %}
+<h1 class="fw-bold text-primary m-0">
+    <i class="bi bi-bar-chart-fill me-2"></i> Dashboard Amministratore
+</h1>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-2">
+
+  <!-- 🔹 Prossima gara (solo due pulsanti A/B e C/D) -->
+  <div class="mb-3 d-flex justify-content-center flex-wrap gap-2">
+    {% set next_races = {'A/B': None, 'C/D': None} %}
+    {% for race in races|sort(attribute='race_date') %}
+      {% if race.race_date >= current_time %}
+        {% if race.category in ['A','B'] and not next_races['A/B'] %}
+          {% set next_races = next_races.update({'A/B': race}) or next_races %}
+        {% elif race.category in ['C','D'] and not next_races['C/D'] %}
+          {% set next_races = next_races.update({'C/D': race}) or next_races %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% for group, race in next_races.items() %}
+      {% if race %}
+        <button type="button"
+                class="btn btn-sm {% if group == 'A/B' %}btn-primary{% else %}btn-info{% endif %}"
+                data-bs-toggle="modal"
+                data-bs-target="#raceModal{{ race.id }}">
+          Prossima Gara {{ group }}: {{ race.race_date }}
+        </button>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- 🔹 Filtri -->
+  <div class="d-flex flex-wrap align-items-center mb-3 gap-2 justify-content-center">
+    <input type="text" id="teamSearch" class="form-control form-control-sm" placeholder="Cerca team..." style="width: 180px;">
+    <select id="categoryFilter" class="form-select form-select-sm" style="width: 100px;">
+      <option value="">Tutte le categorie</option>
+      {% for cat in ['A','B','C','D'] %}
+        <option value="{{ cat }}">{{ cat }}</option>
+      {% endfor %}
+    </select>
+    <select id="divisionFilter" class="form-select form-select-sm" style="width: 120px;">
+      <option value="">Tutte le divisioni</option>
+      {% for div in teams | map(attribute='division') | unique if div %}
+        <option value="{{ div }}">{{ div }}</option>
+      {% endfor %}
+    </select>
+    <div class="form-check ms-2">
+      <input class="form-check-input" type="checkbox" id="hasLineupFilter">
+      <label class="form-check-label small" for="hasLineupFilter">Solo con lineup</label>
+    </div>
+  </div>
+
+  <!-- 🔹 Griglia squadre -->
+  <div class="team-grid" style="max-height: 600px; overflow-y: auto; padding-right: 4px;">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-2" id="teamsContainer">
+      {% for team in teams %}
+        {% set color = {'A':'#dc3545','B':'#198754','C':'#0dcaf0','D':'#ffc107'}.get(team.category, '#adb5bd') %}
+        <div class="col team-card-wrapper"
+             data-category="{{ team.category }}"
+             data-division="{{ team.division }}"
+             data-lineup="{{ 'true' if team.has_lineup else 'false' }}"
+             data-name="{{ team.name|lower }}"
+             data-trc="{{ team.trc }}">
+
+          <a href="{{ url_for('admin_bp.manage_lineup', trc=team.trc, race_date='next') }}"
+             class="text-decoration-none text-dark">
+
+            <div class="card shadow-sm small hover-shadow position-relative h-100"
+                 style="border-left: 4px solid {{ color }}; cursor: pointer;">
+              {% if team.has_lineup %}
+                <span class="position-absolute top-0 end-0 badge rounded-pill bg-success m-1">✔</span>
+              {% endif %}
+
+              <div class="card-header py-1 px-2 d-flex justify-content-between align-items-center small">
+                <strong class="text-truncate" style="max-width: 65%;">{{ team.name.split()[-1] }}</strong>
+                <span class="badge bg-primary">🚴 {{ team.member_count or 0 }}</span>
+              </div>
+
+              <div class="card-body py-1 px-2 small">
+                <p class="mb-1"><strong>Cat:</strong> {{ team.category or '—' }}</p>
+                <p class="mb-1"><strong>Div:</strong> {{ team.division or '—' }}</p>
+                <p class="mb-1"><strong>TRC:</strong> {{ team.trc }}</p>
+                <p class="mb-1"><strong>Cap:</strong>
+                  <span class="{{ 'text-success' if team.captain_name != '—' else 'text-muted' }}">{{ team.captain_name }}</span>
+                </p>
+                {% if team.next_race_date %}
+                  <p class="mb-0"><strong>Prossima Gara:</strong> {{ team.next_race_date }}</p>
+                {% endif %}
+              </div>
+
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- 🔹 Modali gare -->
+{% for race in races %}
+<div class="modal fade" id="raceModal{{ race.id }}" tabindex="-1" aria-labelledby="raceModalLabel{{ race.id }}" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="raceModalLabel{{ race.id }}">{{ race.name }} - {{ race.race_date }}</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Formato:</strong> {{ race.format }}</p>
+        <p><strong>Mondo:</strong> {{ race.world }}</p>
+        <p><strong>Percorso:</strong> {{ race.course }}</p>
+        <p><strong>Giri:</strong> {{ race.laps }}</p>
+        <p><strong>Distanza:</strong> {{ race.distance_km }} km</p>
+        <p><strong>Dislivello:</strong> {{ race.elevation_m }} m</p>
+        <p><strong>Powerups:</strong> {{ race.powerups or 'Nessuno' }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<!-- 🔹 Filtri JS -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('teamSearch');
+  const categorySelect = document.getElementById('categoryFilter');
+  const divisionSelect = document.getElementById('divisionFilter');
+  const hasLineupCheckbox = document.getElementById('hasLineupFilter');
+  const cards = document.querySelectorAll('.team-card-wrapper');
+
+  function filterTeams() {
+    const query = searchInput.value.toLowerCase();
+    const category = categorySelect.value;
+    const division = divisionSelect.value;
+    const hasLineup = hasLineupCheckbox.checked;
+
+    cards.forEach(card => {
+      const matchesName = card.dataset.name.includes(query);
+      const matchesCat = !category || card.dataset.category === category;
+      const matchesDiv = !division || card.dataset.division === division;
+      const matchesLineup = !hasLineup || card.dataset.lineup === "true";
+      card.style.display = (matchesName && matchesCat && matchesDiv && matchesLineup) ? '' : 'none';
+    });
+  }
+
+  searchInput.addEventListener('input', filterTeams);
+  categorySelect.addEventListener('change', filterTeams);
+  divisionSelect.addEventListener('change', filterTeams);
+  hasLineupCheckbox.addEventListener('change', filterTeams);
+});
+</script>
+
+<script>
+document.title = "Dashboard Amministratore";
+</script>
+
+{% endblock %}

@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+{% block title %}Formazione Team{% endblock %}
+
+{% block page_title %}
+<h1 class="fw-bold text-primary m-0">
+  <i class="bi bi-person-lines-fill me-2"></i>
+  Formazione per la gara del {{ race_date }} – Team {{ team_name }}
+</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container py-2" style="max-width:920px;">
+
+  <!-- Capitano -->
+  <div class="card mb-3">
+    <div class="card-body d-flex align-items-center gap-3">
+      <div>
+        <strong>🧑‍✈️ Capitano</strong><br>
+        {% if assigned_captain %}
+          <span class="text-success fs-6">{{ assigned_captain }}</span>
+        {% else %}
+          <span class="text-muted fs-6">Nessun capitano assegnato</span>
+        {% endif %}
+      </div>
+      <div class="ms-auto text-end">
+        <small class="text-muted">Seleziona fino a 6 rider</small><br>
+        <span id="counter" class="fw-bold">0/6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Messaggi flash -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, msg in messages %}
+        <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-sm py-2">{{ msg }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <!-- Form lineup -->
+  <form method="POST" id="lineupForm" class="mb-3">
+    <input type="hidden" name="action" value="save_lineup">
+
+    <div class="row g-2">
+      {% for rider in riders %}
+        {% set is_selected = rider.profile_id in selected_ids %}
+        {% set is_busy = rider.profile_id in busy_riders and not is_selected %}
+        <div class="col-6 col-sm-4 col-md-3">
+          <label class="rider-card d-block position-relative p-2 rounded {{ 'selected' if is_selected else '' }} {{ 'busy' if is_busy else '' }}"
+                 data-id="{{ rider.profile_id }}" title="{{ rider.name }}">
+            <input type="checkbox" name="riders[]" value="{{ rider.profile_id }}" 
+                   {% if is_selected %}checked{% endif %}
+                   {% if is_busy %}disabled{% endif %}
+                   class="d-none rider-checkbox">
+
+            <div class="d-flex align-items-center gap-2">
+              <img src="{{ url_for('static', filename='images/avatar/' ~ rider.profile_id ~ '.jpeg') }}"
+                   alt="{{ rider.name }}"
+                   class="avatar-img rounded-circle"
+                   onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/avatar/default-avatar.png') }}';">
+
+              <div class="flex-grow-1 small text-truncate">
+                <div class="fw-semibold">{{ rider.name }}</div>
+                <div class="text-muted">
+                  <span class="badge bg-light text-dark small">{{ rider.category or '&mdash;' }}</span>
+                  {% if is_busy %}
+                    <span class="text-muted small"> • occupato</span>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-2 d-flex justify-content-between align-items-center small">
+              <span class="text-muted">ID: {{ rider.profile_id }}</span>
+              {% if is_selected %}
+                <span class="badge bg-success">✓</span>
+              {% endif %}
+            </div>
+          </label>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="mt-3 d-grid">
+      <button type="submit" class="btn btn-primary" id="saveBtn">✅ Salva Formazione</button>
+    </div>
+  </form>
+</div>
+
+<style>
+/* Card layout */
+.rider-card {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s linear;
+  min-height: 84px;
+}
+.rider-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+.rider-card.selected { background: linear-gradient(135deg,#e6ffed,#c9f7d6); border-color: #b6f0c0; }
+.rider-card.busy { opacity: .6; filter: grayscale(.05); cursor: not-allowed; }
+
+/* Aggiungi questa regola nel blocco <style> */
+.rider-card > * {
+    /* Assicura che i click attraversino gli elementi interni e raggiungano la <label> */
+    pointer-events: none;
+}
+
+/* Rabilita gli eventi solo per la checkbox se mai dovesse servire (ma è nascosta) */
+.rider-card .rider-checkbox {
+    pointer-events: auto;
+}
+
+/* Avatar */
+.avatar-img {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid rgba(0,0,0,0.04);
+}
+
+/* Responsive */
+@media (max-width: 420px) {
+  .avatar-img { width: 46px; height: 46px; }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const maxPick = 6;
+    const cards = Array.from(document.querySelectorAll('.rider-card'));
+    const counter = document.getElementById('counter');
+    const form = document.getElementById('lineupForm');
+    const container = document.querySelector('.container');
+    let timeoutId;
+
+    function countSelected() {
+        return cards.filter(c => c.querySelector('.rider-checkbox').checked).length;
+    }
+
+    function updateCounter() {
+        counter.textContent = `${countSelected()}/${maxPick}`;
+    }
+
+    // Funzione Flash Message
+    function flashMessage(text, level='info') {
+        const existing = document.querySelector('.js-flash-alert');
+        if (existing) existing.remove();
+        
+        const el = document.createElement('div');
+        // Usa alert-danger per gli errori critici come il mancato salvataggio
+        // Usa alert-warning per avvertimenti (limite)
+        const alertClass = level === 'danger' ? 'danger' : (level === 'warning' ? 'warning' : 'info');
+        el.className = `alert alert-${alertClass} alert-dismissible fade show js-flash-alert py-2`;
+        el.setAttribute('role', 'alert');
+        el.innerHTML = `${text}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+        
+        container.insertBefore(el, container.firstChild);
+
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            const currentEl = document.querySelector('.js-flash-alert');
+            if (currentEl) currentEl.remove();
+        }, 3500);
+    }
+
+    cards.forEach(card => {
+        const cb = card.querySelector('.rider-checkbox');
+
+        // Handler di click sulla CARD
+        card.addEventListener('click', (e) => {
+            // Impedisce l'interazione con link o elementi che hanno una propria logica
+            if (e.target.closest('a')) return; 
+
+            // Se la checkbox è disabilitata (busy)
+            if (cb.disabled) {
+                // Se la card è disabilitata, non facciamo nulla se non mostrare l'errore
+                flashMessage("Rider non disponibile: è già schierato per un'altra squadra per questa gara.", "danger"); 
+                // Impediamo l'azione predefinita della label
+                e.preventDefault();
+                return;
+            }
+
+            // Controlla se l'utente sta cercando di SELEZIONARE (cb.checked è false in questo momento)
+            // E se il limite è già stato raggiunto
+            if (!cb.checked && countSelected() >= maxPick) {
+                // CRITICAL FIX: Impedisce al browser di fare il toggle della checkbox (dato che è una label)
+                e.preventDefault(); 
+                flashMessage(`⚠️ Puoi selezionare al massimo ${maxPick} corridori`, "warning");
+                return;
+            }
+            
+            // Per tutti gli altri casi (selezionare PRIMA del limite, o deselezionare), 
+            // lasciamo che l'azione predefinita della <label> faccia il toggle,
+            // e poi inneschiamo l'evento 'change' per aggiornare la UI.
+            
+            // Uso un piccolo ritardo per assicurarmi che il browser abbia registrato 
+            // il cambio di stato della checkbox dovuto al click sulla label.
+            setTimeout(() => {
+                 cb.dispatchEvent(new Event('change'));
+            }, 1);
+        });
+
+        // Handler di change sulla CHECKBOX
+        cb.addEventListener('change', () => {
+            card.classList.toggle('selected', cb.checked);
+            updateCounter();
+        });
+        
+        // Inizializza correttamente la classe (per i rider già selezionati al caricamento)
+        card.classList.toggle('selected', cb.checked);
+    });
+
+    updateCounter();
+
+// ----------------------------------------------------------------------
+// CORREZIONE LOGICA FORM SUBMIT
+// ----------------------------------------------------------------------
+
+    form.addEventListener('submit', (e) => {
+        const selected = countSelected();
+        
+        
+        
+        if (selected > maxPick) {
+            e.preventDefault();
+            // Questo caso non dovrebbe accadere se la logica di click è corretta, 
+            // ma lo gestiamo per sicurezza.
+            flashMessage(`ERRORE: Hai selezionato ${selected} corridori. Puoi selezionarne al massimo ${maxPick}. La formazione non è stata salvata.`, 'danger');
+            return;
+        }
+        
+        // Se il controllo passa ( <= maxPick), il form procede con l'invio.
+    });
+});
+</script>
+{% endblock %}

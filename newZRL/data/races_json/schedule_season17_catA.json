@@ -1,0 +1,192 @@
+{
+  "success": true,
+  "payload": [
+    {
+      "race": 1,
+      "tags": [],
+      "rules": "SHOW_RACE_RESULTS;NO_POWERUPS",
+      "duration": 1,
+      "paceType": 1,
+      "segments": [],
+      "eventDate": "2025-11-04T08:00:00Z",
+      "courseFull": "LONDON_Greatest_London_Flat",
+      "courseName": "Greatest London Flat",
+      "raceFormat": "wtrlttt",
+      "courseWorld": "LONDON",
+      "subgroup_label": "A",
+      "courseDifficulty": 2,
+      "lapAscentInMeters": 163.5,
+      "lapDistanceInMeters": 23609,
+      "leadinAscentInMeters": 59,
+      "leadinDistanceInMeters": 7428
+    },
+    {
+      "race": 2,
+      "tags": [
+        "new_race_results",
+        "wtrl",
+        "zrl",
+        "zrl17",
+        "zrl_arch",
+        "no_flagging",
+        "steering_disabled",
+        "nobraking",
+        "powerup_percent=\"0,34,5,33,8,33\"",
+        "timestamp=1762830139828"
+      ],
+      "rules": "NO_TT_BIKES;SHOW_RACE_RESULTS",
+      "duration": 2,
+      "paceType": 1,
+      "segments": [
+        {
+          "segmentId": 28,
+          "segmentName": "New York FWD Climb",
+          "segmentVisits": 2
+        },
+        {
+          "segmentId": 32,
+          "segmentName": "New York REV Sprint",
+          "segmentVisits": 2
+        },
+        {
+          "segmentId": 31,
+          "segmentName": "New York REV Climb",
+          "segmentVisits": 2
+        }
+      ],
+      "eventDate": "2025-11-11T08:00:00Z",
+      "courseFull": "NEWYORK_Rising_Empire",
+      "courseName": "Rising Empire",
+      "raceFormat": "race",
+      "courseWorld": "NEWYORK",
+      "subgroup_label": "A",
+      "courseDifficulty": 3,
+      "lapAscentInMeters": 376.9,
+      "lapDistanceInMeters": 20816,
+      "leadinAscentInMeters": 1.8,
+      "leadinDistanceInMeters": 380
+    },
+    {
+      "race": 3,
+      "tags": [
+        "wtrl",
+        "zrl",
+        "zrl17",
+        "zrl_arch",
+        "no_flagging",
+        "nobraking",
+        "new_race_results",
+        "starting_powerup=0",
+        "arch_powerup=\"2,8,0,0\"",
+        "timestamp=1763152869186",
+        "steering_disabled"
+      ],
+      "rules": "NO_TT_BIKES;SHOW_RACE_RESULTS",
+      "duration": 3,
+      "paceType": 1,
+      "segments": [],
+      "eventDate": "2025-11-18T08:00:00Z",
+      "courseFull": "LONDON_London_Loop_Reverse",
+      "courseName": "London Loop Reverse",
+      "raceFormat": "scratch",
+      "courseWorld": "LONDON",
+      "subgroup_label": "A",
+      "courseDifficulty": 2,
+      "lapAscentInMeters": 230.5,
+      "lapDistanceInMeters": 14834,
+      "leadinAscentInMeters": 0.7,
+      "leadinDistanceInMeters": 172
+    },
+    {
+      "race": 4,
+      "tags": [],
+      "rules": "SHOW_RACE_RESULTS;NO_POWERUPS",
+      "duration": 1,
+      "paceType": 1,
+      "segments": [],
+      "eventDate": "2025-11-25T08:00:00Z",
+      "courseFull": "NEWYORK_Watts_the_Limit",
+      "courseName": "Watts the Limit",
+      "raceFormat": "wtrlttt",
+      "courseWorld": "NEWYORK",
+      "subgroup_label": "A",
+      "courseDifficulty": 3,
+      "lapAscentInMeters": 200.464,
+      "lapDistanceInMeters": 29532,
+      "leadinAscentInMeters": 18.55,
+      "leadinDistanceInMeters": 1424
+    },
+    {
+      "race": 5,
+      "tags": [
+        "arch_powerup=\"3,5,1,0\"",
+        "wtrl",
+        "zrl",
+        "zrl17",
+        "zrl_arch",
+        "no_flagging",
+        "steering_disabled",
+        "nobraking",
+        "new_race_results",
+        "timestamp=1762837901631"
+      ],
+      "rules": "NO_TT_BIKES;SHOW_RACE_RESULTS",
+      "duration": 10,
+      "paceType": 1,
+      "segments": [
+        {
+          "segmentId": 95,
+          "segmentName": "Champion's Sprint FWD Sprint",
+          "segmentVisits": 11
+        },
+        {
+          "segmentId": 98,
+          "segmentName": "The Clyde Kicker FWD Climb",
+          "segmentVisits": 10
+        }
+      ],
+      "eventDate": "2025-12-02T08:00:00Z",
+      "courseFull": "SCOTLAND_Glasgow_Crit_Circuit",
+      "courseName": "Glasgow Crit Circuit",
+      "raceFormat": "race",
+      "courseWorld": "SCOTLAND",
+      "subgroup_label": "A",
+      "courseDifficulty": 3,
+      "lapAscentInMeters": 33.1,
+      "lapDistanceInMeters": 3012,
+      "leadinAscentInMeters": 0.4,
+      "leadinDistanceInMeters": 247
+    },
+    {
+      "race": 6,
+      "tags": [
+        "timestamp=1762838698174",
+        "powerup_percent=\"0,34,1,33,5,33\"",
+        "new_race_results",
+        "nobraking",
+        "steering_disabled",
+        "no_flagging",
+        "zrl_arch",
+        "zrl17",
+        "zrl",
+        "wtrl"
+      ],
+      "rules": "NO_TT_BIKES;SHOW_RACE_RESULTS",
+      "duration": 1,
+      "paceType": 1,
+      "segments": [],
+      "eventDate": "2025-12-09T08:00:00Z",
+      "courseFull": "NEWYORK_Empire_Elevation",
+      "courseName": "Empire Elevation",
+      "raceFormat": "scratch",
+      "courseWorld": "NEWYORK",
+      "subgroup_label": "A",
+      "courseDifficulty": 2,
+      "lapAscentInMeters": 260.83,
+      "lapDistanceInMeters": 24155,
+      "leadinAscentInMeters": 4.768,
+      "leadinDistanceInMeters": 1824
+    }
+  ],
+  "loggedin": false
+}

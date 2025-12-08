@@ -1,0 +1,91 @@
+{% if race %}
+<div class="container py-3">
+
+  <!-- 🔹 Intestazione gara -->
+  <div class="mb-3">
+    <h4 class="text-primary mb-1">{{ race.name }}</h4>
+    <small class="text-muted">{{ race.race_date }} &middot; {{ race.world or '—' }} &middot; {{ race.course or '—' }}</small>
+  </div>
+
+  <!-- 🔹 Informazioni principali -->
+  <div class="row mb-3">
+    <div class="col-6 col-md-3 mb-2">
+      <div class="p-2 border rounded bg-light text-center">
+        <strong>Formato</strong>
+        <div>{{ race.format or '—' }}</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3 mb-2">
+      <div class="p-2 border rounded bg-light text-center">
+        <strong>Laps</strong>
+        <div>{{ race.laps or 0 }}</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3 mb-2">
+      <div class="p-2 border rounded bg-light text-center">
+        <strong>Distanza</strong>
+        <div>{{ race.distance_km or 0 }} km</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3 mb-2">
+      <div class="p-2 border rounded bg-light text-center">
+        <strong>Elevazione</strong>
+        <div>{{ race.elevation_m or 0 }} m</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔹 Powerups -->
+  {% if race.powerups %}
+  <div class="mb-3">
+    <strong>Powerups:</strong>
+    <ul>
+      {% for p in race.powerups.splitlines() %}
+        <li>{{ p }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <!-- 🔹 FAL Segments -->
+  {% if race.fal_segments %}
+  <div class="mb-3">
+    <strong>FAL Segments:</strong>
+    <ul>
+      {% for seg in race.fal_segments.splitlines() %}
+        <li>{{ seg }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <!-- 🔹 FTS Segments -->
+  {% if race.fts_segments %}
+  <div class="mb-3">
+    <strong>FTS Segments:</strong>
+    <ul>
+      {% for seg in race.fts_segments.splitlines() %}
+        <li>{{ seg }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <!-- 🔹 Stato gara -->
+  <div class="mb-3">
+    <p>
+      <strong>Stato:</strong> 
+      {% if race.active %}<span class="text-success">Attiva</span>{% else %}<span class="text-secondary">Passata</span>{% endif %}
+    </p>
+    <p>
+      <strong>Round ID:</strong> {{ race.round_id or '—' }}<br>
+      <strong>External ID:</strong> {{ race.external_id or '—' }}
+    </p>
+  </div>
+
+</div>
+{% else %}
+<div class="alert alert-warning text-center">
+  🚫 Dettagli gara non disponibili.
+</div>
+{% endif %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Import ZwiftPower{% endblock %}
+{% block page_title %}Importa Corridori da ZwiftPower{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="card shadow-lg p-4 rounded-3">
+    <h4 class="mb-3">Importa corridori del team</h4>
+
+    <form method="POST" action="{{ url_for('import_zwift_bp.import_zwiftpower') }}">
+      <div class="mb-3">
+        <label for="team_id" class="form-label fw-bold">Team ID su ZwiftPower</label>
+        <input
+          type="number"
+          name="team_id"
+          id="team_id"
+          class="form-control form-control-lg"
+          placeholder="Es. 16461"
+          required
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg">
+        🚴 Importa Corridori
+      </button>
+    </form>
+  </div>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="mt-4">
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Import Gare WTRL{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Import Gare WTRL</h2>
+    <p>Inserisci la stagione da importare:</p>
+
+    <form method="get" action="{{ url_for('import_wtrl_season.run_import') }}" class="mb-3">
+        <input type="text" name="season_name" placeholder="Anno/Stagione" class="form-control w-25 d-inline-block me-2" required>
+        <button type="submit" class="btn btn-primary">Avvia import</button>
+    </form>
+
+    <p>I file JSON vengono letti da <code>/data/wtrl_races</code>. Se le gare esistono già, verranno aggiornate.</p>
+</div>
+{% endblock %}

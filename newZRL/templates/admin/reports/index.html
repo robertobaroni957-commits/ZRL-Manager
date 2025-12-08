@@ -1,0 +1,332 @@
+{% extends "base.html" %}
+
+{% block extra_styles %}
+<style>
+/* Layout */
+.report-container {
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  box-sizing: border-box;
+}
+
+/* Card dei controlli */
+.report-controls-card {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+/* Tabelle */
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  font-size: 0.90rem;
+}
+
+.report-table th,
+.report-table td {
+  padding: 0.45rem 0.6rem;
+  vertical-align: middle;
+  border-top: 1px solid #e9ecef;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.report-table thead th {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.report-table tbody tr:nth-child(even) {
+  background: #fbfbfb;
+}
+
+/* Badges di categoria */
+.badge-category {
+  display: inline-block;
+  padding: 0.18rem 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 0.25rem;
+  color: #fff;
+  line-height: 1;
+}
+
+.badge-A { background-color: #dc3545; }
+.badge-B { background-color: #28a745; }
+.badge-C { background-color: #17a2b8; }
+.badge-D { background-color: #ffc107; color: #212529; }
+.badge-OTHER { background-color: #6c757d; }
+
+/* Griglia lineup / team */
+.lineup-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .lineup-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Team card */
+.team-card {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 0.6rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  border: 1px solid #eef0f2;
+}
+
+.team-card h6 {
+  margin: 0 0 0.4rem 0;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Table small inside team card */
+.team-card .report-table th,
+.team-card .report-table td {
+  font-size: 0.78rem;
+  padding: 0.3rem 0.45rem;
+}
+
+/* Export buttons group */
+.export-buttons a.btn {
+  min-width: 54px;
+  height: 28px;
+  padding: 0 6px;
+  font-size: 0.8rem;
+}
+
+/* Empty state */
+.empty-state {
+  padding: 1.2rem;
+  text-align: center;
+  color: #6c757d;
+  background: #fff;
+  border-radius: 0.5rem;
+  border: 1px dashed #e9ecef;
+}
+
+/* Misc */
+.controls-row { gap: 0.5rem; align-items: end; }
+.form-label.small { font-size: 0.78rem; color: #6c757d; margin-bottom: .15rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="report-container">
+
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+      <h5 class="m-0 fw-bold">📊 Report Amministrativi</h5>
+      {% if report_type == 'lineup' and race_date %}
+        <small class="text-muted">Gara del {{ race_date }}</small>
+      {% endif %}
+    </div>
+    <div class="text-end">
+      <small class="text-muted">Vista: <strong>{{ report_type|replace('_',' ')|title }}</strong></small>
+    </div>
+  </div>
+
+  <!-- Controlli e filtri -->
+  <div class="report-controls-card mb-3">
+    <div class="d-flex flex-column flex-md-row justify-content-between">
+      <form method="get" class="d-flex controls-row flex-wrap mb-2 mb-md-0" role="search" aria-label="Filtri report">
+        <div class="d-flex flex-column me-2">
+          <label for="report_type" class="form-label small">Report</label>
+          <select name="report_type" id="report_type" class="form-select form-select-sm" onchange="this.form.submit()">
+            <option value="riders_compact" {% if report_type == 'riders_compact' %}selected{% endif %}>Riders Compatto</option>
+            <option value="riders" {% if report_type == 'riders' %}selected{% endif %}>Riders Dettagliato</option>
+            <option value="teams" {% if report_type == 'teams' %}selected{% endif %}>Teams</option>
+            <option value="lineup" {% if report_type == 'lineup' %}selected{% endif %}>Lineup</option>
+            <option value="team_composition" {% if report_type == 'team_composition' %}selected{% endif %}>Composizione Team</option>
+            <option value="round_standings" {% if report_type == 'round_standings' %}selected{% endif %}>Classifica Punti Team</option>
+          </select>
+        </div>
+
+        {% if report_type in ['riders_compact', 'riders', 'lineup', 'team_composition', 'round_standings'] %}
+        <div class="d-flex flex-column me-2">
+          <label for="category" class="form-label small">Categoria</label>
+          <select name="category" id="category" class="form-select form-select-sm">
+            <option value="">Tutte</option>
+            {% for cat in categories %}
+              <option value="{{ cat }}" {% if cat == category_filter %}selected{% endif %}>{{ cat }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        {% endif %}
+
+        {% if report_type in ['riders_compact', 'riders', 'team_composition'] %}
+        <div class="d-flex flex-column me-2">
+          <label for="team" class="form-label small">Team</label>
+          <select name="team" id="team" class="form-select form-select-sm">
+            <option value="">Tutti</option>
+            {% for t in teams %}
+              <option value="{{ t }}" {% if t == team_filter %}selected{% endif %}>{{ t }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        {% endif %}
+
+        <div class="d-flex flex-column">
+          <label class="form-label small">&nbsp;</label>
+          <div class="d-flex">
+            <button type="submit" class="btn btn-primary btn-sm me-2">Filtra</button>
+            <a href="{{ url_for('admin_reports.index') }}" class="btn btn-outline-secondary btn-sm">Reset</a>
+          </div>
+        </div>
+      </form>
+
+      <div class="d-flex align-items-center gap-2">
+        <div class="export-buttons">
+          <a title="Export HTML" href="{{ url_for('admin_export.export_report', report_type=report_type, category=category_filter or '', team=team_filter or '', fmt='html') }}" class="btn btn-outline-secondary btn-sm">HTML</a>
+          <a title="Export CSV" href="{{ url_for('admin_export.export_report', report_type=report_type, category=category_filter or '', team=team_filter or '', fmt='csv') }}" class="btn btn-success btn-sm">CSV</a>
+          <a title="Export XLSX" href="{{ url_for('admin_export.export_report', report_type=report_type, category=category_filter or '', team=team_filter or '', fmt='xlsx') }}" class="btn btn-primary btn-sm">Excel</a>
+          <a title="Export PDF" href="{{ url_for('admin_export.export_report', report_type=report_type, category=category_filter or '', team=team_filter or '', fmt='pdf') }}" class="btn btn-danger btn-sm">PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenuto principale -->
+  {% if report_type in ['lineup', 'team_composition'] %}
+    {% if not lineup_per_team %}
+      <div class="empty-state">
+        Nessun team trovato o nessun rider per i filtri selezionati.
+      </div>
+    {% else %}
+      <div class="lineup-grid">
+        {% for team, riders in lineup_per_team.items() %}
+          {% set rider_list = riders|list %}
+          {% set team_category = team_categories.get(team, 'OTHER') %}
+          {% set header_class = "thead-" ~ team_category %}
+          <div class="team-card">
+            <h6>
+              <span class="text-truncate" style="max-width:70%;">{{ team }}</span>
+              <small class="text-muted">
+                {% if rider_list|length > 0 and rider_list[0].captain %}
+                  👑 Capitano: {{ rider_list[0].captain }}
+                {% else %}
+                  &nbsp;
+                {% endif %}
+              </small>
+            </h6>
+
+            <div class="table-responsive">
+              <table class="table table-sm report-table mb-0">
+                <thead>
+                  <tr class="{{ header_class }}">
+                    <th scope="col">Profile</th>
+                    <th scope="col">Cat.</th>
+                    <th scope="col">Name</th>
+                    {% if report_type == 'team_composition' %}
+                      <th scope="col">Punti</th>
+                    {% endif %}
+                    {% if report_type == 'lineup' %}
+                      <th scope="col">Data Gara</th>
+                    {% endif %}
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for rider in rider_list %}
+                    <tr>
+                      <td class="text-start">{{ rider.profile_id }}</td>
+                      <td>
+                        <span class="badge-category badge-{{ rider.category|default('OTHER') }}">{{ rider.category|default('') }}</span>
+                      </td>
+                      <td>{{ rider.rider_name|default('N/A') }}</td>
+                      {% if report_type == 'team_composition' %}
+                        <td>{{ rider.riderpoints|default('-') }}</td>
+                      {% endif %}
+                      {% if report_type == 'lineup' %}
+                        <td>{{ rider.race_date|default('-') }}</td>
+                      {% endif %}
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  {% else %}
+    {# Riders compact / riders / teams / round_standings - tabella unica full width #}
+    {% if rows|length == 0 %}
+      <div class="empty-state">
+        Nessun dato trovato per il report '{{ report_type }}' o i filtri selezionati.
+      </div>
+    {% else %}
+      <div class="table-responsive">
+        <table class="table table-hover table-sm report-table">
+          <thead>
+            <tr>
+              {% for c in columns %}
+                <th scope="col">
+                  {% if c in ["profile_id", "category", "status", "riderpoints", "team_category"] %}
+                    {{ c.replace('_', ' ')|title }}
+                  {% elif c.startswith('Team') %}
+                    {{ c }}
+                  {% elif c == 'team' %}
+                    Team
+                  {% elif c == 'n_riders' %}
+                    N. Riders
+                  {% elif c == 'captain' %}
+                    Capitano
+                  {% else %}
+                    {{ c.replace('_', ' ')|title }}
+                  {% endif %}
+                </th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in rows %}
+              <tr>
+                {% for c in columns %}
+                  {% if c == "category" or c == "team_category" %}
+                    {% set badge_class = "badge-" ~ (row[c] or 'OTHER') %}
+                    <td><span class="badge-category {{ badge_class }}">{{ row[c] or '' }}</span></td>
+                  {% else %}
+                    <td>{{ row[c] if row[c] is not none else '' }}</td>
+                  {% endif %}
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
+  {% endif %}
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach(function (el) {
+      new bootstrap.Tooltip(el);
+    });
+
+    document.querySelectorAll('form[method="get"]').forEach(function(f){
+      f.addEventListener('submit', function(e){
+        var btn = f.querySelector('button[type="submit"]');
+        if(btn) { btn.disabled = true; setTimeout(()=>btn.disabled=false, 800); }
+      });
+    });
+  });
+</script>
+
+{% endblock %}

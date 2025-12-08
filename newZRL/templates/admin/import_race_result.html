@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Importazione risultati gara</h2>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, msg in messages %}
+          <div class="alert alert-{{ 'success' if category=='success' else 'danger' }} alert-dismissible fade show" role="alert">
+            {{ msg }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <!-- Form per il numero gara -->
+    <form method="post" class="mt-3">
+        <div class="col-md-4">
+            <label for="race_number" class="form-label">Numero Gara</label>
+            <input type="number" class="form-control" id="race_number" name="race_number" placeholder="Inserisci numero gara" required>
+        </div>
+
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary">Importa Risultati</button>
+        </div>
+
+        <!-- Progress bar (può essere aggiornata via JS in futuro) -->
+        <div class="progress mt-3" style="height: 25px; display: none;" id="importProgress">
+          <div class="progress-bar" role="progressbar" style="width: 0%;" id="progressBar">0%</div>
+        </div>
+    </form>
+</div>
+
+<script>
+// JS minimale per simulare progress bar (può essere sostituito da AJAX in futuro)
+function startProgressBar() {
+    const progress = document.getElementById('importProgress');
+    const bar = document.getElementById('progressBar');
+    progress.style.display = 'block';
+    let width = 0;
+    const interval = setInterval(() => {
+        if (width >= 100) {
+            clearInterval(interval);
+        } else {
+            width += 10;
+            bar.style.width = width + '%';
+            bar.innerText = width + '%';
+        }
+    }, 200);
+}
+</script>
+{% endblock %}

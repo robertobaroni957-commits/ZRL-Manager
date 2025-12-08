@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}WTRL Riders{% endblock %}
+
+{% block content %}
+<h1>WTRL Riders</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Team</th>
+            <th>Member Status</th>
+            <th>Signed Up</th>
+            <th>Rider Points</th>
+            <th>Appearances Round</th>
+            <th>Appearances Season</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for wr in wtrl_riders %}
+        <tr>
+            <td>{{ wr.rider.name }}</td>
+            <td>{{ wr.category }}</td>
+            <td>{{ wr.team.name }}</td>
+            <td>{{ wr.memberStatus }}</td>
+            <td>{{ 'Yes' if wr.signedup else 'No' }}</td>
+            <td>{{ wr.riderpoints }}</td>
+            <td>{{ wr.appearancesRound }}</td>
+            <td>{{ wr.appearancesSeason }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

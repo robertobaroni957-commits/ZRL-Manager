@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h2>✏️ Modifica Utente</h2>
+
+  <form method="POST">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email"
+             value="{{ user['email'] }}" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="role" class="form-label">Ruolo</label>
+      <select name="role" class="form-select form-select-sm">
+  <option value="Amministratore" {% if user.role == 'admin' %}selected{% endif %}>Amministratore</option>
+  <option value="Moderatore" {% if user.role == 'moderator' %}selected{% endif %}>Moderatore</option>
+  <option value="Capitano" {% if user.role == 'captain' %}selected{% endif %}>Capitano</option>
+</select>
+
+    </div>
+
+    <div class="mb-3">
+      <label for="team_id" class="form-label">Team ID</label>
+      <input type="text" class="form-control" id="team_id" name="team_id"
+             value="{{ user['team_id'] or '' }}">
+    </div>
+
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox" id="active" name="active" value="1"
+             {% if user['active'] == 1 %}checked{% endif %}>
+      <label class="form-check-label" for="active">Attivo</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">💾 Salva modifiche</button>
+    <a href="{{ url_for('admin_manage_users.list_users') }}" class="btn btn-secondary">⬅️ Indietro</a>
+  </form>
+</div>
+{% endblock %}

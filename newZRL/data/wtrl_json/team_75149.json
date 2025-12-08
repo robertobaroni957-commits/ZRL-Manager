@@ -1,0 +1,227 @@
+{
+  "meta": {
+    "trc": 75149,
+    "division": "Open Lime League Division C3",
+    "racingSeason": "2025/26",
+    "team": {
+      "tttid": 13730,
+      "teamid": 13730,
+      "name": "Team INOX PRO",
+      "jerseyname": "Team INOX",
+      "jerseyimage": "INOX2025_thumb",
+      "recruiting": false,
+      "isdev": false
+    },
+    "nextRace": {
+      "teamstart": null,
+      "raceFormat": ""
+    },
+    "competition": {
+      "wtrlid": "ZRL",
+      "season": 17,
+      "sportsYear": 2025,
+      "roundnumber": 1,
+      "division": "C",
+      "class": "2350C30",
+      "status": "ACTIVE",
+      "registered": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "memberCount": 9,
+    "membersRemaining": 3,
+    "administrators": {
+      "registerer": {
+        "firstName": "Francesco",
+        "lastName": "Ravasi",
+        "profileId": 3617605,
+        "userId": "7af2a7ad-02d4-48a2-b213-5e284962d12a"
+      },
+      "captain": {
+        "firstName": "Luca",
+        "lastName": "Bollani",
+        "profileId": 3208463,
+        "userId": "e0a0f535-7569-4d72-9826-f4df684e5b44"
+      },
+      "managers": [
+        {
+          "firstName": "Street",
+          "lastName": "Hawk",
+          "profileId": 7072727,
+          "userId": "6075bb3f-add5-45c5-a355-096458c4917a"
+        }
+      ]
+    }
+  },
+  "permissions": {
+    "id": 7072727,
+    "isAdmin": true
+  },
+  "riders": [
+    {
+      "tmuid": 395552,
+      "name": "Claudio Varani",
+      "avatar": "/uploads/profile_picture/1667507823_ft00000062_26.JPG",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "C",
+      "zftp": 2.87,
+      "zftpw": 218,
+      "zmapw": 254,
+      "zmap": 3.34,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 3,
+      "appearancesSeason": 0,
+      "profileId": 1992085,
+      "userId": "80c2b6da-ca8f-44fc-886a-ae1a6ae6f924"
+    },
+    {
+      "tmuid": 383448,
+      "name": "Cristian Pelosi",
+      "avatar": "https://static-cdn.zwift.com/prod/profile/d8504895-3086513",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "C",
+      "zftp": 3.09,
+      "zftpw": 207,
+      "zmapw": 251,
+      "zmap": 3.75,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 2,
+      "appearancesSeason": 3,
+      "profileId": 6797127,
+      "userId": "ca25c43c-f1c9-4878-8f3a-a86ddb9ee011"
+    },
+    {
+      "tmuid": 383441,
+      "name": "Francesco Ravasi",
+      "avatar": "/uploads/profile_picture/1734338820_38ac560823f041f12a73073a48be7f87 - Copia.jpg",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "C",
+      "zftp": 2.53,
+      "zftpw": 223,
+      "zmapw": 308,
+      "zmap": 3.5,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 2,
+      "appearancesSeason": 3,
+      "profileId": 3617605,
+      "userId": "7af2a7ad-02d4-48a2-b213-5e284962d12a"
+    },
+    {
+      "tmuid": 397509,
+      "name": "Franco Fiorentino",
+      "avatar": "https://static-cdn.zwift.com/prod/profile/3ab7caa5-2496279",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "B",
+      "zftp": 3.47,
+      "zftpw": 257,
+      "zmapw": 287,
+      "zmap": 3.87,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 1,
+      "appearancesSeason": 0,
+      "profileId": 5061824,
+      "userId": "f3e3701e-7361-4194-afc8-be40eb8fb8d9"
+    },
+    {
+      "tmuid": 383445,
+      "name": "Giancarlo Rugolo",
+      "avatar": "/uploads/profile_picture/1730991966_IMG_3831.jpeg",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "C",
+      "zftp": 2.91,
+      "zftpw": 204,
+      "zmapw": 265,
+      "zmap": 3.79,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 3,
+      "appearancesSeason": 3,
+      "profileId": 6109036,
+      "userId": "7db82c5e-b465-4a99-b9d6-448d6ff5b770"
+    },
+    {
+      "tmuid": 383443,
+      "name": "Luca Bollani",
+      "avatar": "/uploads/profile_picture/1724821228_IMG_8313.jpeg",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "C",
+      "zftp": 3.21,
+      "zftpw": 231,
+      "zmapw": 279,
+      "zmap": 3.87,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 2,
+      "appearancesSeason": 1,
+      "profileId": 3208463,
+      "userId": "e0a0f535-7569-4d72-9826-f4df684e5b44"
+    },
+    {
+      "tmuid": 399085,
+      "name": "Norberto Civardi",
+      "avatar": "/uploads/profile_picture/1734022678_IMG_1286.jpeg",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "C",
+      "zftp": 3.01,
+      "zftpw": 205,
+      "zmapw": 260,
+      "zmap": 3.82,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 1,
+      "appearancesSeason": 0,
+      "profileId": 296309,
+      "userId": "733b2095-e572-4ad3-9299-a2547ceff287"
+    },
+    {
+      "tmuid": 399427,
+      "name": "Alfredo Bertelli",
+      "avatar": "https://static-cdn.zwift.com/prod/profile/3d67c6bd-962059",
+      "memberStatus": "INVITED",
+      "signedup": false,
+      "category": "C",
+      "zftp": 3.12,
+      "zftpw": 237,
+      "zmapw": 277,
+      "zmap": 3.65,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 0,
+      "appearancesSeason": 0,
+      "profileId": 1798563,
+      "userId": "f9a19728-3cd6-4fdd-b665-a823541fc358"
+    },
+    {
+      "tmuid": 383447,
+      "name": "Enrico Emili [ INOX ]",
+      "avatar": "/uploads/profile_picture/1736024557_IMG-20241026-WA0004.jpeg",
+      "memberStatus": "REMOVED-CATEGORY",
+      "signedup": false,
+      "category": "B",
+      "zftp": 3.67,
+      "zftpw": 264,
+      "zmapw": 309,
+      "zmap": 4.29,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 1,
+      "appearancesSeason": 2,
+      "profileId": 7065061,
+      "userId": "38b8b66b-98cb-4b23-b4b2-1ce8313936b5"
+    }
+  ]
+}

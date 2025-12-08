@@ -1,0 +1,3793 @@
+{
+    "success": true,
+    "payload": {
+        "seasons": [
+            {
+                "value": 1,
+                "text": "Season 1"
+            },
+            {
+                "value": 2,
+                "text": "Season 2"
+            },
+            {
+                "value": 3,
+                "text": "Season 3"
+            },
+            {
+                "value": 4,
+                "text": "Season 4"
+            },
+            {
+                "value": 5,
+                "text": "Season 5"
+            },
+            {
+                "value": 6,
+                "text": "Season 6"
+            },
+            {
+                "value": 7,
+                "text": "2022\/23 Round 1"
+            },
+            {
+                "value": 8,
+                "text": "2022\/23 Round 2"
+            },
+            {
+                "value": 9,
+                "text": "2022\/23 Round 3"
+            },
+            {
+                "value": 2023,
+                "text": "2022\/23 WTRL Finals"
+            },
+            {
+                "value": 10,
+                "text": "2023\/24 Round 1"
+            },
+            {
+                "value": 11,
+                "text": "2023\/24 Round 2"
+            },
+            {
+                "value": 12,
+                "text": "2023\/24 Round 3"
+            },
+            {
+                "value": 2024,
+                "text": "2023\/24 Finals"
+            },
+            {
+                "value": 1000,
+                "text": "Summer Showdown!"
+            },
+            {
+                "value": 13,
+                "text": "2024\/24 Round 1"
+            },
+            {
+                "value": 14,
+                "text": "2024\/24 Round 2"
+            },
+            {
+                "value": 15,
+                "text": "2024\/24 Round 3"
+            },
+            {
+                "value": 2025,
+                "text": "2024\/25 ZRL Finals"
+            },
+            {
+                "value": 1001,
+                "text": "Showdown!"
+            },
+            {
+                "value": 16,
+                "text": "2025\/26 Round 1: Coast Clash"
+            },
+            {
+                "value": 17,
+                "text": "2025\/26 Round 2: City Showdown"
+            }
+        ],
+        "competition": [
+            {
+                "value": "20",
+                "text": "Open Regular",
+                "leagues": [
+                    {
+                        "value": 120,
+                        "text": "Cherry",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 160,
+                        "text": "Pink",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 220,
+                        "text": "Amber",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 180,
+                        "text": "Ruby",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "A2",
+                                "text": "A2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 260,
+                        "text": "Saffron",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 280,
+                        "text": "Topaz",
+                        "divisions": [
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 310,
+                        "text": "Green",
+                        "divisions": [
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 330,
+                        "text": "Emerald",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "A2",
+                                "text": "A2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B3",
+                                "text": "B3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 350,
+                        "text": "Lime",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "A2",
+                                "text": "A2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B3",
+                                "text": "B3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B4",
+                                "text": "B4",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B5",
+                                "text": "B5",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C3",
+                                "text": "C3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C4",
+                                "text": "C4",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 360,
+                        "text": "Mint",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 370,
+                        "text": "Shamrock",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "A2",
+                                "text": "A2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "A3",
+                                "text": "A3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "A4",
+                                "text": "A4",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B3",
+                                "text": "B3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B4",
+                                "text": "B4",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B5",
+                                "text": "B5",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B6",
+                                "text": "B6",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C3",
+                                "text": "C3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C4",
+                                "text": "C4",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C5",
+                                "text": "C5",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D2",
+                                "text": "D2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D3",
+                                "text": "D3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 410,
+                        "text": "Blue",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "A2",
+                                "text": "A2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B3",
+                                "text": "B3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B4",
+                                "text": "B4",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C3",
+                                "text": "C3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 420,
+                        "text": "Aqua",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "A2",
+                                "text": "A2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "A3",
+                                "text": "A3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "A4",
+                                "text": "A4",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B3",
+                                "text": "B3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B4",
+                                "text": "B4",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B5",
+                                "text": "B5",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B6",
+                                "text": "B6",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C3",
+                                "text": "C3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C4",
+                                "text": "C4",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C5",
+                                "text": "C5",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D2",
+                                "text": "D2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 430,
+                        "text": "Cobalt",
+                        "divisions": [
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B3",
+                                "text": "B3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B4",
+                                "text": "B4",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C3",
+                                "text": "C3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 440,
+                        "text": "Navy",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "A2",
+                                "text": "A2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B3",
+                                "text": "B3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B4",
+                                "text": "B4",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B5",
+                                "text": "B5",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C3",
+                                "text": "C3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D2",
+                                "text": "D2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 450,
+                        "text": "Royal",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B3",
+                                "text": "B3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 510,
+                        "text": "Purple",
+                        "divisions": [
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 530,
+                        "text": "Indigo",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "A2",
+                                "text": "A2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "A3",
+                                "text": "A3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B3",
+                                "text": "B3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B4",
+                                "text": "B4",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B5",
+                                "text": "B5",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C3",
+                                "text": "C3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C4",
+                                "text": "C4",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C5",
+                                "text": "C5",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D2",
+                                "text": "D2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 540,
+                        "text": "Lavender",
+                        "divisions": [
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 550,
+                        "text": "Lilac",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "value": "00",
+                "text": "Women's Regular",
+                "leagues": [
+                    {
+                        "value": 160,
+                        "text": "Pink",
+                        "divisions": [
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 330,
+                        "text": "Emerald",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 360,
+                        "text": "Mint",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "A2",
+                                "text": "A2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C3",
+                                "text": "C3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D2",
+                                "text": "D2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 430,
+                        "text": "Cobalt",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 530,
+                        "text": "Indigo",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D2",
+                                "text": "D2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 550,
+                        "text": "Lilac",
+                        "divisions": [
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "value": "21",
+                "text": "Open Development",
+                "leagues": [
+                    {
+                        "value": 160,
+                        "text": "Pink",
+                        "divisions": [
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 220,
+                        "text": "Amber",
+                        "divisions": [
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 350,
+                        "text": "Lime",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 370,
+                        "text": "Shamrock",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B3",
+                                "text": "B3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 420,
+                        "text": "Aqua",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B3",
+                                "text": "B3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 440,
+                        "text": "Navy",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 530,
+                        "text": "Indigo",
+                        "divisions": [
+                            {
+                                "value": "A1",
+                                "text": "A1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B2",
+                                "text": "B2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "B3",
+                                "text": "B3",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 550,
+                        "text": "Lilac",
+                        "divisions": [
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "value": "01",
+                "text": "Women's Development",
+                "leagues": [
+                    {
+                        "value": 360,
+                        "text": "Mint",
+                        "divisions": [
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C2",
+                                "text": "C2",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": 530,
+                        "text": "Indigo",
+                        "divisions": [
+                            {
+                                "value": "B1",
+                                "text": "B1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "C1",
+                                "text": "C1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "D1",
+                                "text": "D1",
+                                "races": [
+                                    {
+                                        "value": 1,
+                                        "text": "Race 1: Greatest London Flat TTT (Finalized)",
+                                        "format": "TTT"
+                                    },
+                                    {
+                                        "value": 2,
+                                        "text": "Race 2: Everything Bagel PTS (Finalized)",
+                                        "format": "PTS"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

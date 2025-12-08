@@ -1,0 +1,155 @@
+{
+  "meta": {
+    "trc": 76127,
+    "division": "Open Lime Dev League Division A1",
+    "racingSeason": "2025/26",
+    "team": {
+      "tttid": 16898,
+      "teamid": 16898,
+      "name": "TEAM INOX LIONS",
+      "jerseyname": "Team INOX",
+      "jerseyimage": "INOX2025_thumb",
+      "recruiting": false,
+      "isdev": true
+    },
+    "nextRace": {
+      "teamstart": null,
+      "raceFormat": ""
+    },
+    "competition": {
+      "wtrlid": "ZRL",
+      "season": 17,
+      "sportsYear": 2025,
+      "roundnumber": 1,
+      "division": "A",
+      "class": "2350A11",
+      "status": "ACTIVE",
+      "registered": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    "memberCount": 5,
+    "membersRemaining": 7,
+    "administrators": {
+      "registerer": {
+        "firstName": "Street",
+        "lastName": "Hawk",
+        "profileId": 7072727,
+        "userId": "6075bb3f-add5-45c5-a355-096458c4917a"
+      },
+      "captain": {
+        "firstName": "Giovanni",
+        "lastName": "Bettega",
+        "profileId": 6778481,
+        "userId": "034b5db7-de9a-4ea4-83fe-ffe65be66351"
+      },
+      "managers": [
+        {
+          "firstName": "Street",
+          "lastName": "Hawk",
+          "profileId": 7072727,
+          "userId": "6075bb3f-add5-45c5-a355-096458c4917a"
+        }
+      ]
+    }
+  },
+  "permissions": {
+    "id": 7072727,
+    "isAdmin": true
+  },
+  "riders": [
+    {
+      "tmuid": 395714,
+      "name": "Francesco Avesani",
+      "avatar": "/uploads/profile_picture/1762265605_13694_20250706_115907_522385937_socialmedia.jpg",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "A",
+      "zftp": 4.28,
+      "zftpw": 282,
+      "zmapw": 321,
+      "zmap": 4.87,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 0,
+      "appearancesSeason": 0,
+      "profileId": 413798,
+      "userId": "eb7cd789-4fa5-4f94-a244-919201c375c8"
+    },
+    {
+      "tmuid": 395715,
+      "name": "Gerolamo Vigorelli",
+      "avatar": "https://static-cdn.zwift.com/prod/profile/fa8cefe2-3024821",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "A",
+      "zftp": 4.53,
+      "zftpw": 326,
+      "zmapw": 354,
+      "zmap": 4.92,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 0,
+      "appearancesSeason": 0,
+      "profileId": 6057042,
+      "userId": "52bce322-0122-4d5f-b022-30d44943ae10"
+    },
+    {
+      "tmuid": 395709,
+      "name": "Giovanni Bettega",
+      "avatar": "/uploads/profile_picture/1728159369_IMG_20240809_203613_723.jpg",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "A",
+      "zftp": 5.24,
+      "zftpw": 325,
+      "zmapw": 355,
+      "zmap": 5.73,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 1,
+      "appearancesSeason": 0,
+      "profileId": 6778481,
+      "userId": "034b5db7-de9a-4ea4-83fe-ffe65be66351"
+    },
+    {
+      "tmuid": 395712,
+      "name": "Luca Pastori",
+      "avatar": "https://static-cdn.zwift.com/prod/profile/4e2e7308-962540",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "A",
+      "zftp": 4.48,
+      "zftpw": 264,
+      "zmapw": 318,
+      "zmap": 5.39,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 0,
+      "appearancesSeason": 0,
+      "profileId": 1121337,
+      "userId": "0458f5a5-1e38-4bb0-a0be-c287121e1766"
+    },
+    {
+      "tmuid": 395765,
+      "name": "Street Hawk",
+      "avatar": "/uploads/profile_picture/default.png",
+      "memberStatus": "MEMBER",
+      "signedup": false,
+      "category": "",
+      "zftp": 0,
+      "zftpw": 0,
+      "zmapw": 0,
+      "zmap": 0,
+      "riderpoints": 0,
+      "teams": 0,
+      "appearancesRound": 0,
+      "appearancesSeason": 0,
+      "profileId": 7072727,
+      "userId": "6075bb3f-add5-45c5-a355-096458c4917a"
+    }
+  ]
+}
