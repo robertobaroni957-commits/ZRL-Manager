@@ -21,6 +21,13 @@ def create_app():
     login_manager.init_app(app)
 
     # -----------------------------
+    # HEALTH CHECK per Render
+    # -----------------------------
+    @app.route("/health")
+    def health():
+        return "ok", 200
+
+    # -----------------------------
     # User loader
     # -----------------------------
     from newZRL.models.user import User
@@ -32,13 +39,11 @@ def create_app():
     # -----------------------------
     # Blueprint reali
     # -----------------------------
-    # Auth e Main
     from newZRL.blueprints.auth.routes import auth_bp
     from newZRL.blueprints.main.routes import main_bp
 
-    # Admin blueprints
-    from newZRL.blueprints.admin.bp import admin_bp      # blueprint principale
-    from newZRL.blueprints.admin import dashboard     # carica le route sul blueprint
+    from newZRL.blueprints.admin.bp import admin_bp
+    from newZRL.blueprints.admin import dashboard
     from newZRL.blueprints.admin.reports import admin_reports_bp
     from newZRL.blueprints.admin.export import admin_export_bp
     from newZRL.blueprints.admin.import_zwiftpower import import_zwift_bp
@@ -46,7 +51,6 @@ def create_app():
     from newZRL.blueprints.admin.routes_import import bp_import
     from newZRL.blueprints.admin.import_wtrl_season import import_wtrl_season_bp
     from newZRL.blueprints.admin.race_importer import admin_race_bp  
-    
 
     # -----------------------------
     # Registrazione blueprint
