@@ -7,7 +7,7 @@ app = Flask(__name__)
 # Usa la variabile d'ambiente DATABASE_URL o fallback all'URL esterno
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
     'DATABASE_URL',
-    'postgresql+psycopg2://zrlmanager_db_user:teF9dx9z82SvMVHq6wT6MZPQ1c6nZmyQ@dpg-d4res6ngi27c73amg2e0-a.frankfurt-postgres.render.com/zrlmanager_db'
+    'postgresql+psycopg://zrlmanager_db_user:teF9dx9z82SvMVHq6wT6MZPQ1c6nZmyQ@dpg-d4res6ngi27c73amg2e0-a.frankfurt-postgres.render.com/zrlmanager_db'
 )
 
 db = SQLAlchemy(app)
