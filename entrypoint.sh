@@ -1,13 +1,10 @@
 #!/bin/sh
+set -e  # Exit immediately if a command exits with a non-zero status
 
-# Exit immediately if a command exits with a non-zero status.
-set -e
-
-# Run database migrations
 echo "Running database migrations..."
-python run_migrations.py
-echo "Migrations complete."
+python -m flask --app newZRL:create_app db upgrade
 
-# Print a message and start the main application
 echo "Starting application server..."
-waitress-serve --host=0.0.0.0 --port=${PORT} run:app
+# Usa Waitress per servire l'app su Render
+# $PORT è impostata automaticamente dall'ambiente Render
+exec waitress-serve --listen=0.0.0.0:$PORT run:app
