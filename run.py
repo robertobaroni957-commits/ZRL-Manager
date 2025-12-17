@@ -1,28 +1,30 @@
-from newZRL import create_app, db
-from flask_migrate import Migrate
+# run.py
 import os
+import logging
+import sys
+from waitress import serve
+from newZRL import create_app, db # Ensure db is imported if used directly here, but it's passed to create_app
+from flask_migrate import Migrate # Import Flask-Migrate
 
-app = create_app()
+# Configure logging for the Waitress server
+# This ensures that logs are always directed to stdout
+logging.basicConfig(
+    level=logging.INFO, # Or logging.DEBUG if more verbose output is needed
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    stream=sys.stdout
+)
 
-# -----------------------------
-# Inizializza Flask-Migrate
-# -----------------------------
-migrate = Migrate(app, db)
+app = create_app(os.getenv("FLASK_CONFIG") or "development")
 
+# Initialize Flask-Migrate
+migrate = Migrate(app, db) # Initialize Migrate with the app and db
 
-# -----------------------------
-# Creazione tabelle iniziali
-# -----------------------------
-def init_db():
-    """Crea tutte le tabelle mancanti senza cancellare dati esistenti."""
-    with app.app_context():
-        db.create_all()
-        print("✅ Database inizializzato")
-
-# -----------------------------
-# Avvio dell'app
-# -----------------------------
 if __name__ == "__main__":
-    init_db()  # crea tabelle se mancanti
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port, debug=True)
+    if os.environ.get("FLASK_DEBUG") == "1":
+        # Development server
+        port = int(os.environ.get("PORT", 5000)) # Use PORT env var for dev as well
+        app.run(host="0.0.0.0", port=port, debug=True)
+    else:
+        # Production server
+        port = int(os.environ.get("PORT", 5000)) # Ensure PORT env var is used for production
+        serve(app, host="0.0.0.0", port=port)

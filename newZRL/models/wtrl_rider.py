@@ -6,7 +6,7 @@ class WTRL_Rider(db.Model):
 
     id = db.Column(db.String(100), primary_key=True)
     team_trc = db.Column(db.Integer, db.ForeignKey("teams.trc"), nullable=False)
-    profile_id = db.Column(db.BigInteger, nullable=False)
+    profile_id = db.Column(db.BigInteger, nullable=False, index=True) # Removed unique=True
     tmuid = db.Column(db.Integer)
     name = db.Column(db.String(255))
     avatar = db.Column(db.String(255))

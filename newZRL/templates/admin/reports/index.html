@@ -183,17 +183,17 @@
           <label class="form-label small">&nbsp;</label>
           <div class="d-flex">
             <button type="submit" class="btn btn-primary btn-sm me-2">Filtra</button>
-            <a href="{{ url_for('admin_reports.index') }}" class="btn btn-outline-secondary btn-sm">Reset</a>
+            <a href="{{ url_for('admin_bp.index') }}" class="btn btn-outline-secondary btn-sm">Reset</a>
           </div>
         </div>
       </form>
 
       <div class="d-flex align-items-center gap-2">
         <div class="export-buttons">
-          <a title="Export HTML" href="{{ url_for('admin_export.export_report', report_type=report_type, category=category_filter or '', team=team_filter or '', fmt='html') }}" class="btn btn-outline-secondary btn-sm">HTML</a>
-          <a title="Export CSV" href="{{ url_for('admin_export.export_report', report_type=report_type, category=category_filter or '', team=team_filter or '', fmt='csv') }}" class="btn btn-success btn-sm">CSV</a>
-          <a title="Export XLSX" href="{{ url_for('admin_export.export_report', report_type=report_type, category=category_filter or '', team=team_filter or '', fmt='xlsx') }}" class="btn btn-primary btn-sm">Excel</a>
-          <a title="Export PDF" href="{{ url_for('admin_export.export_report', report_type=report_type, category=category_filter or '', team=team_filter or '', fmt='pdf') }}" class="btn btn-danger btn-sm">PDF</a>
+          <a title="Export HTML" href="{{ url_for('admin_bp.export_report', report_type=report_type, category=category_filter or '', team=team_filter or '', fmt='html') }}" class="btn btn-outline-secondary btn-sm">HTML</a>
+          <a title="Export CSV" href="{{ url_for('admin_bp.export_report', report_type=report_type, category=category_filter or '', team=team_filter or '', fmt='csv') }}" class="btn btn-success btn-sm">CSV</a>
+          <a title="Export XLSX" href="{{ url_for('admin_bp.export_report', report_type=report_type, category=category_filter or '', team=team_filter or '', fmt='xlsx') }}" class="btn btn-primary btn-sm">Excel</a>
+          <a title="Export PDF" href="{{ url_for('admin_bp.export_report', report_type=report_type, category=category_filter or '', team=team_filter or '', fmt='pdf') }}" class="btn btn-danger btn-sm">PDF</a>
         </div>
       </div>
     </div>

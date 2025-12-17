@@ -1,15 +1,16 @@
-from flask import Blueprint, request, render_template, flash
+from flask import request, render_template, flash
 from flask_login import login_required
 from newZRL import db
 from newZRL.models import Team, WTRL_Rider, RaceLineup
 from newZRL.models.race_results import RaceResultsTeam, RoundStanding
 from sqlalchemy import func
 
+from ..bp import admin_bp
+
 Rider = WTRL_Rider
-admin_reports_bp = Blueprint("admin_reports", __name__, url_prefix="/admin/reports")
 
 
-@admin_reports_bp.route("/")
+@admin_bp.route("/reports/")
 @login_required
 def index():
     # ---------------------------

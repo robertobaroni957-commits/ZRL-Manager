@@ -4,13 +4,13 @@
 {% if user_id and role %}
 {% set sidebar_items = [
     {'label': 'Dashboard', 'endpoint': 'admin_bp.dashboard', 'icon': 'bi-bar-chart-fill'},
-    {'label': 'Report', 'endpoint': 'admin_reports.index', 'icon': 'bi-file-earmark-bar-graph', 'roles': ['admin','moderator']},
+    {'label': 'Report', 'endpoint': 'admin_bp.index', 'icon': 'bi-file-earmark-bar-graph', 'roles': ['admin','moderator']},
     {'label': 'Importazioni', 'icon': 'bi-arrow-repeat', 'roles': ['admin','moderator'],
         'children': [
-            {'label': 'Importa WTRL (Teams + Riders)', 'endpoint': 'wtrl_import.import_teams_and_riders'},
-            {'label': 'Importa Classifiche WTRL', 'endpoint': 'admin_race.import_race'},
-            {'label': 'Importa Gare WTRL', 'endpoint': 'import_wtrl_season.import_page'},
-            {'label': 'ZwiftPower', 'endpoint': 'admin_import_zwiftpower.import_zwift_team'}
+            {'label': 'Importa WTRL (Teams + Riders)', 'endpoint': 'admin_bp.import_wtrl_teams_and_riders_from_api'},
+            {'label': 'Importa Classifiche WTRL', 'endpoint': 'admin_bp.wtrl_rankings_page'},
+            {'label': 'Importa Gare WTRL', 'endpoint': 'admin_bp.import_page'},
+            {'label': 'ZwiftPower', 'endpoint': 'admin_bp.import_zwift_team'}
         ]
     }
 ] %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}WTRL Rankings{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>WTRL Rankings Import</h2>
+    <p>Use this page to import WTRL race results and update round standings.</p>
+
+    <form method="get" action="{{ url_for('admin_bp.import_wtrl_rankings_from_api') }}" class="mb-3">
+        <div class="mb-3">
+            <label for="season" class="form-label">Season:</label>
+            <input type="text" id="season" name="season" value="17" class="form-control w-25" required>
+        </div>
+        <div class="mb-3">
+            <label for="race_number" class="form-label">Race Number (optional - leave blank for all rounds in season):</label>
+            <input type="text" id="race_number" name="race_number" class="form-control w-25">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Start Rankings Import</button>
+    </form>
+
+    <hr>
+
+    <h3>Current Round Standings</h3>
+    {% if grouped_standings %}
+        {% for class_id, standings_list in grouped_standings.items() %}
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4 class="mb-0">Class: {{ class_id }}</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Team Name</th>
+                            <th>Total Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for standing in standings_list %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ standing.team.name }}</td>
+                            <td>{{ standing.total_points }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No round standings available for selected season.</p>
+    {% endif %}
+
+</div>
+{% endblock %}

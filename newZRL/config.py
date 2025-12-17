@@ -1,14 +1,32 @@
 import os
+import logging
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = os.environ.get(
-        "DATABASE_URL",
-        "postgresql+psycopg://zrlmanager_db_user:teF9dx9z82SvMVHq6wT6MZPQ1c6nZmyQ@dpg-d4res6ngi27c73amg2e0-a.frankfurt-postgres.render.com/zrlmanager_db"
-    )
-
+    SECRET_KEY = os.environ.get("SECRET_KEY")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    LOGGING_LEVEL = logging.INFO
+    WTRL_API_COOKIE = os.environ.get("WTRL_API_COOKIE")
 
-    SECRET_KEY = os.environ.get(
-        "SECRET_KEY",
-        "super-secret-key"
-    )
+class DevelopmentConfig(Config):
+    DEBUG = True
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DEV_DATABASE_URL")
+    LOGGING_LEVEL = logging.DEBUG
+
+class TestingConfig(Config):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL", "sqlite:///:memory:")
+    WTF_CSRF_ENABLED = False
+    SECRET_KEY = "a-secret-key-for-testing"
+
+class ProductionConfig(Config):
+    DEBUG = False
+    SQLALCHEMY_DATABASE_URI = os.environ.get("PROD_DATABASE_URL")
+
+config_by_name = {
+    "development": DevelopmentConfig,
+    "testing": TestingConfig,
+    "production": ProductionConfig,
+}

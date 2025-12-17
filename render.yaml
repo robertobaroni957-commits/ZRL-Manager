@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: zrl-manager
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "waitress-serve --host=0.0.0.0 --port=${PORT} run:app"
+    envVars:
+      - key: FLASK_CONFIG
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: SQLALCHEMY_DATABASE_URI
+        fromDatabase:
+          name: zrl-db
+          property: connectionString
+
+  - type: db
+    name: zrl-db
+    engine: mysql
+    plan: free

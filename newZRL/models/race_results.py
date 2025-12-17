@@ -1,5 +1,6 @@
 from datetime import datetime
 from newZRL import db
+from sqlalchemy import event
 
 class RaceResultsTeam(db.Model):
     __tablename__ = "race_results_teams"
@@ -7,8 +8,8 @@ class RaceResultsTeam(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     season = db.Column(db.Integer, nullable=False)
     class_id = db.Column(db.String(50), nullable=False)
-    race = db.Column(db.Integer, nullable=False)
-    team_id = db.Column(db.Integer, db.ForeignKey("teams.trc"), nullable=False)
+    race = db.Column(db.Integer, nullable=False, index=True)
+    team_id = db.Column(db.Integer, db.ForeignKey("teams.trc"), nullable=False, index=True)
     finp = db.Column(db.Integer, default=0)
     pbp = db.Column(db.Integer, default=0)
     totp = db.Column(db.Integer, default=0)
@@ -26,8 +27,8 @@ class RaceResultsRider(db.Model):
     __tablename__ = "race_results_riders"
 
     id = db.Column(db.Integer, primary_key=True)
-    race_team_result_id = db.Column(db.Integer, db.ForeignKey("race_results_teams.id"), nullable=False)
-    rider_id = db.Column(db.String(100), db.ForeignKey("wtrl_riders.id"), nullable=False)
+    race_team_result_id = db.Column(db.Integer, db.ForeignKey("race_results_teams.id"), nullable=False, index=True)
+    rider_id = db.Column(db.String(100), db.ForeignKey("wtrl_riders.id"), nullable=False, index=True)
     finp = db.Column(db.Integer, default=0)
     pbp = db.Column(db.Integer, default=0)
     totp = db.Column(db.Integer, default=0)
@@ -46,8 +47,13 @@ class RoundStanding(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     season = db.Column(db.Integer, nullable=False)
-    class_id = db.Column(db.String(50), nullable=False)
-    team_id = db.Column(db.Integer, db.ForeignKey("teams.trc"), nullable=False)
+    class_id = db.Column(db.String(50), nullable=False, index=True)
+    team_id = db.Column(db.Integer, db.ForeignKey("teams.trc"), nullable=False, index=True)
     total_points = db.Column(db.Integer, default=0)
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
+    team = db.relationship("Team") # Add this relationship
+
+@event.listens_for(RoundStanding, "before_update")
+def receive_before_update(mapper, connection, target):
+    target.updated_at = datetime.utcnow()

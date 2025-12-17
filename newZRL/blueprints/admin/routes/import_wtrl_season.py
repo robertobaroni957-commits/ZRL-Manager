@@ -1,6 +1,6 @@
 import os
 import json
-from flask import Blueprint, render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request
 from newZRL import db
 from newZRL.models.season import Season
 from newZRL.models.round import Round
@@ -8,12 +8,7 @@ from newZRL.models.race import Race
 import requests
 from dateutil import parser
 
-import_wtrl_season_bp = Blueprint(
-    'import_wtrl_season', __name__, template_folder='templates'
-)
-
-JSON_DIR = r"C:\Progetti\ZRL_MANAGER_V2.0\newZRL\data\races_json"
-os.makedirs(JSON_DIR, exist_ok=True)
+from ..bp import admin_bp
 
 
 def parse_date(date_str):
@@ -27,9 +22,11 @@ def parse_date(date_str):
         return None
 
 
-def fetch_and_save_json(season_name="17"):
-    """Scarica solo il round corrente per due categorie rappresentative: A e C"""
-    categories = ["A", "C"]  # A rappresenta A+B, C rappresenta C+D
+def fetch_wtrl_schedule_data(season_name="17", categories=None):
+    """Fetches race schedule data directly from WTRL API for specified categories."""
+    if categories is None:
+        categories = ["A", "B", "C", "D"] # Default to all categories
+    
     base_url = "https://www.wtrl.racing/api/wtrlruby/"
     headers = {
         "User-Agent": "Mozilla/5.0",
@@ -37,7 +34,7 @@ def fetch_and_save_json(season_name="17"):
         "wtrl-api-version": "2.7",
     }
 
-    saved_files = []
+    all_payloads = []
     for category in categories:
         params = {
             "wtrlid": "zrl",
@@ -52,42 +49,34 @@ def fetch_and_save_json(season_name="17"):
                 print(f"[WARN] Categoria {category}: Status code {resp.status_code}")
                 continue
             data = resp.json()
-            filename = os.path.join(JSON_DIR, f"schedule_season{season_name}_cat{category}.json")
-            with open(filename, "w", encoding="utf-8") as f:
-                json.dump(data, f, ensure_ascii=False, indent=2)
-            saved_files.append(filename)
+            # If the JSON contains all categories, we only need the payload
+            # Otherwise, if it's filtered by category, append its payload
+            if "payload" in data:
+                all_payloads.extend(data["payload"])
         except Exception as e:
             print(f"[ERROR] Categoria {category}: {e}")
-    return saved_files
+    return all_payloads
 
 
 
-def import_json_to_db(season_name="17"):
-    """Importa i JSON nel DB creando season, round e race"""
-    files = [f for f in os.listdir(JSON_DIR) if f.endswith(".json") and f.startswith(f"schedule_season{season_name}")]
-    if not files:
-        print(f"[WARN] Nessun file JSON trovato per la stagione {season_name}")
+def import_wtrl_schedule_data_to_db(season_name="17", all_race_payloads=None):
+    """Imports WTRL race schedule data directly into the DB creating season, round, and race entries."""
+    if all_race_payloads is None:
+        all_race_payloads = [] # Ensure it's a list
+
+    if not all_race_payloads:
+        print(f"[WARN] Nessun payload di gara fornito per la stagione {season_name}")
         return
 
+    # Extract all round dates from all race payloads for season date calculation
     all_round_dates = []
-
-    for file in files:
-        filepath = os.path.join(JSON_DIR, file)
-        try:
-            with open(filepath, "r", encoding="utf-8") as f:
-                data = json.load(f)
-        except Exception as e:
-            print(f"[WARN] File corrotto {file}: {e}")
-            continue
-
-        payload = data.get("payload", [])
-        for r in payload:
-            d = parse_date(r.get("eventDate"))
-            if d:
-                all_round_dates.append(d)
+    for race_data in all_race_payloads:
+        d = parse_date(race_data.get("eventDate"))
+        if d:
+            all_round_dates.append(d)
 
     if not all_round_dates:
-        print(f"[WARN] Nessuna data valida trovata per la stagione {season_name}")
+        print(f"[WARN] Nessuna data valida trovata per la stagione {season_name} nel payload fornito")
         return
 
     # Season
@@ -101,29 +90,21 @@ def import_json_to_db(season_name="17"):
         db.session.add(season)
         db.session.flush()
     else:
-        season.start_date = min(all_round_dates)
-        season.end_date = max(all_round_dates)
+        season.start_date = min(season.start_date or min(all_round_dates), min(all_round_dates))
+        season.end_date = max(season.end_date or max(all_round_dates), max(all_round_dates))
 
-    # Round + Race
-    for file in files:
-        filepath = os.path.join(JSON_DIR, file)
-        try:
-            with open(filepath, "r", encoding="utf-8") as f:
-                data = json.load(f)
-        except Exception as e:
-            print(f"[WARN] File corrotto {file}: {e}")
-            continue
+    # Aggregate all race data by round number to ensure each round is processed once
+    races_by_round = {}
+    for race_data in all_race_payloads:
+        round_number = race_data.get("roundNumber") or 1
+        if round_number not in races_by_round:
+            races_by_round[round_number] = []
+        races_by_round[round_number].append(race_data)
 
-        payload = data.get("payload", [])
-        if not payload:
-            continue
-
-        filename_parts = os.path.splitext(file)[0].split("_")
-        category = filename_parts[2].replace("cat", "")
-        round_number = payload[0].get("roundNumber") or 1  # Prendiamo il round corrente
+    for round_number, races_in_round in races_by_round.items():
         round_name = f"Round {round_number}"
 
-        round_dates = [parse_date(r.get("eventDate")) for r in payload if parse_date(r.get("eventDate"))]
+        round_dates = [parse_date(r.get("eventDate")) for r in races_in_round if parse_date(r.get("eventDate"))]
         if not round_dates:
             continue
 
@@ -142,18 +123,19 @@ def import_json_to_db(season_name="17"):
                 is_active=True
             )
             db.session.add(round_obj)
-            db.session.flush()  # ID generato subito
+            db.session.flush()
         else:
             round_obj.start_date = min(round_obj.start_date or start_date, start_date)
             round_obj.end_date = max(round_obj.end_date or end_date, end_date)
 
         # Race
-        for race_data in payload:
+        for race_data in races_in_round:
             external_id = str(race_data.get("race") or "")
             if not external_id:
                 continue
 
             race_date = parse_date(race_data.get("eventDate"))
+            category = race_data.get("subgroup_label") 
             race = Race.query.filter_by(round_id=round_obj.id, category=category, external_id=external_id).first()
 
             if not race:
@@ -173,6 +155,8 @@ def import_json_to_db(season_name="17"):
                     segments=json.dumps(race_data.get("segments", [])),
                     leadin_distance=race_data.get("leadinDistanceInMeters"),
                     leadin_ascent=race_data.get("leadinAscentInMeters"),
+                    tags=json.dumps(race_data.get("tags", [])),
+                    pace_type=race_data.get("paceType"),
                     active=1
                 )
                 db.session.add(race)
@@ -189,6 +173,9 @@ def import_json_to_db(season_name="17"):
                 race.segments = json.dumps(race_data.get("segments", []))
                 race.leadin_distance = race_data.get("leadinDistanceInMeters")
                 race.leadin_ascent = race_data.get("leadinAscentInMeters")
+                race.tags = json.dumps(race_data.get("tags", []))
+                race.pace_type = race_data.get("paceType")
+                race.category = category # Ensure this is still correctly assigned
 
     try:
         db.session.commit()
@@ -198,16 +185,21 @@ def import_json_to_db(season_name="17"):
         print(f"[ERROR] Commit fallito: {e}")
 
 
-@import_wtrl_season_bp.route("/run_import", methods=["GET"])
+@admin_bp.route("/run_import", methods=["GET"])
 def run_import():
     season_name = request.args.get("season_name", "17")
-    fetch_and_save_json(season_name)
-    import_json_to_db(season_name)
+    
+    # Fetch data directly from WTRL API
+    all_race_payloads = fetch_wtrl_schedule_data(season_name)
+    
+    # Import fetched data into DB
+    import_wtrl_schedule_data_to_db(season_name, all_race_payloads)
+    
     flash(f"✅ Stagione {season_name} importata con successo", "success")
-    return redirect(url_for("import_wtrl_season.import_page"))
+    return redirect(url_for("admin_bp.import_page"))
 
 
-@import_wtrl_season_bp.route("/import_page", methods=["GET"])
+@admin_bp.route("/import_page", methods=["GET"])
 def import_page():
     seasons = Season.query.order_by(Season.name.desc()).all()
     return render_template("admin/import_wtrl_season.html", seasons=seasons)

@@ -1,7 +1,7 @@
 # export.py
 import io
 import pandas as pd
-from flask import Blueprint, request, send_file, render_template
+from flask import request, send_file, render_template
 from flask_login import login_required
 from newZRL import db
 from newZRL.models import WTRL_Rider, Team, RaceLineup
@@ -13,7 +13,7 @@ from reportlab.lib.pagesizes import A4, landscape
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet
 
-admin_export_bp = Blueprint("admin_export", __name__, url_prefix="/admin/reports")
+from ..bp import admin_bp
 
 
 # ---- Helper: filter options
@@ -136,7 +136,7 @@ def generate_pdf(report_type, data, columns, lineup_per_team=None, team_categori
 
 
 # ---- Main route: export (HTML/CSV/XLSX/PDF)
-@admin_export_bp.route("/export")
+@admin_bp.route("/reports/export")
 @login_required
 def export_report():
     report_type = request.args.get("report_type", "riders_compact").strip()

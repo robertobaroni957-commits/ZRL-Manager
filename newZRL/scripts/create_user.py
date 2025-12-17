@@ -1,9 +1,8 @@
 from werkzeug.security import generate_password_hash
-from newZRL import create_app
-from newZRL.models import db
+from newZRL import create_app, db
 from newZRL.models.user import User
 
-def create_user(email, password, profile_id, role='admin', team_id=None, active=1):
+def create_user(email, password, profile_id, role='admin', team_trc=None, active=1):
     app = create_app()  # crea l'app Flask
 
     with app.app_context():  # 🔑 contesto dell'app
@@ -19,7 +18,7 @@ def create_user(email, password, profile_id, role='admin', team_id=None, active=
             password=hashed_pw,
             profile_id=profile_id,
             role=role,
-            team_id=team_id,
+            team_trc=team_trc,
             active=active
         )
         db.session.add(new_user)
@@ -32,5 +31,6 @@ if __name__ == "__main__":
         email="admin@teaminox.it",
         password="password123",
         profile_id="2975361",
-        role="admin"
+        role="admin",
+        team_trc=None
     )

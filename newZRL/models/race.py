@@ -4,9 +4,9 @@ class Race(db.Model):
     __tablename__ = "races"
 
     id = db.Column(db.Integer, primary_key=True)
-    round_id = db.Column(db.Integer, db.ForeignKey("rounds.id"))
+    round_id = db.Column(db.Integer, db.ForeignKey("rounds.id"), index=True)
     name = db.Column(db.String(255))
-    race_date = db.Column(db.Date)
+    race_date = db.Column(db.Date, index=True)
     format = db.Column(db.String(50))
     world = db.Column(db.String(50))
     course = db.Column(db.String(255))
@@ -22,7 +22,9 @@ class Race(db.Model):
     difficulty = db.Column(db.Integer)
     leadin_distance = db.Column(db.Float)
     leadin_ascent = db.Column(db.Float)
-    category = db.Column(db.String(5))
+    tags = db.Column(db.Text)
+    pace_type = db.Column(db.Integer)
+    category = db.Column(db.String(5), index=True)
 
     active = db.Column(db.Integer, default=1)           # aggiunto
     external_id = db.Column(db.String(50))              # aggiunto

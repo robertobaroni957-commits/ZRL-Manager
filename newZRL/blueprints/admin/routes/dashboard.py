@@ -1,11 +1,8 @@
-# newZRL/blueprints/admin/dashboard.py
-
-from .bp import admin_bp
 from flask import render_template
 from flask_login import login_required
 from datetime import date
 from newZRL import db
-
+from newZRL.blueprints.admin.bp import admin_bp
 from newZRL.models.team import Team
 from newZRL.models.race import Race
 from newZRL.models.round import Round

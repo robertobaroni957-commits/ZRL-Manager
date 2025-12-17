@@ -1,5 +1,6 @@
 from datetime import datetime
 from newZRL import db
+from sqlalchemy import event
 
 class Team(db.Model):
     __tablename__ = "teams"
@@ -23,7 +24,11 @@ class Team(db.Model):
     captain_name = db.Column(db.String(255))
     captain_profile_id = db.Column(db.Integer)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     # Relazione con WTRL_Rider
     wtrl_riders = db.relationship("WTRL_Rider", back_populates="team")
+
+@event.listens_for(Team, "before_update")
+def receive_before_update(mapper, connection, target):
+    target.updated_at = datetime.utcnow()
