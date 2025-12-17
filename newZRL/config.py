@@ -24,6 +24,11 @@ class TestingConfig(Config):
 class ProductionConfig(Config):
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = os.environ.get("PROD_DATABASE_URL")
+    
+    # Aggiunta per correggere l'URL di connessione per Render
+    if SQLALCHEMY_DATABASE_URI and (SQLALCHEMY_DATABASE_URI.startswith("postgres://") or SQLALCHEMY_DATABASE_URI.startswith("postgresql://")):
+        SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql+psycopg2://", 1).replace("postgresql://", "postgresql+psycopg2://", 1)
+
 
 config_by_name = {
     "development": DevelopmentConfig,

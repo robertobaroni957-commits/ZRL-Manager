@@ -10,12 +10,12 @@ services:
         value: production
       - key: SECRET_KEY
         generateValue: true
-      - key: SQLALCHEMY_DATABASE_URI
+      - key: PROD_DATABASE_URL
         fromDatabase:
           name: zrl-db
           property: connectionString
 
   - type: db
     name: zrl-db
-    engine: mysql
+    engine: postgresql
     plan: free
