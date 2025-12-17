@@ -11,6 +11,13 @@ else
     echo "DEBUG: SECRET_KEY is NOT set!"
 fi
 
+echo "DEBUG: Checking PROD_DATABASE_URL..."
+if [ -n "$PROD_DATABASE_URL" ]; then
+    echo "DEBUG: PROD_DATABASE_URL is set (length: ${#PROD_DATABASE_URL})"
+else
+    echo "DEBUG: PROD_DATABASE_URL is NOT set!"
+fi
+
 # Ensure the virtual environment's python is used
 # This assumes the venv is created in .venv/
 if [ -d ".venv" ]; then
