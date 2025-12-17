@@ -1,28 +1,26 @@
-#!/bin/bash
-set -e  # Exit immediately if a command exits with a non-zero status
+#!/bin/sh
 
-echo "==> Starting entrypoint.sh for newZRL"
+# Exit immediately if a command exits with a non-zero status.
+set -e
 
-# -----------------------------
-# 1️⃣ Controllo variabili d'ambiente
-# -----------------------------
-: "${PROD_DATABASE_URL:?PROD_DATABASE_URL must be set}"
-: "${SECRET_KEY:?SECRET_KEY must be set}"
+echo "==> Starting entrypoint.sh for ZRL Manager"
 
-echo "Using PROD_DATABASE_URL and SECRET_KEY environment variables."
+# Ensure the virtual environment's python is used
+# This assumes the venv is created in .venv/
+if [ -d ".venv" ]; then
+    echo "Activating virtual environment..."
+    . .venv/bin/activate
+fi
 
-# -----------------------------
-# 2️⃣ Migrazioni database
-# -----------------------------
+# Run database migrations
 echo "Running database migrations..."
-py -3.13 -m flask --app newZRL:create_app db upgrade
+python run_migrations.py # Use 'python' instead of 'py'
 echo "Database migrations complete."
 
-# -----------------------------
-# 3️⃣ Avvio server con Waitress
-# -----------------------------
-PORT=${PORT:-5000}
-echo "Starting production server on port $PORT..."
-py -3.13 run.py
+# Start the application
+echo "Starting application server..."
+# Ensure Flask application is discoverable for waitress if not handled by run.py
+# If FLASK_APP is needed here, set it explicitly or ensure run.py creates the app directly.
+waitress-serve --host=0.0.0.0 --port=${PORT} run:app
 
 echo "Entrypoint finished."
