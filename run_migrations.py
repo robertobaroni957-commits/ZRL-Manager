@@ -3,7 +3,6 @@ import os
 import logging
 from flask_migrate import upgrade
 from newZRL import create_app
-from alembic.config import Config # Import Config
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -27,10 +26,7 @@ try:
         
         log.info("Applying database migrations with 'upgrade'...")
         
-        # Create Alembic Config object and explicitly point to alembic.ini
-        alembic_cfg = Config("alembic.ini") 
-        # Pass the config object to upgrade
-        upgrade(config=alembic_cfg) 
+        upgrade() 
         
         log.info("Database migrations applied successfully.")
 
