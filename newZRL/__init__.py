@@ -1,4 +1,5 @@
 # newZRL/__init__.py
+import logging
 import sys # Added import
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
