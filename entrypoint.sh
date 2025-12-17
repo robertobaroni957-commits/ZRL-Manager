@@ -1,15 +1,13 @@
 #!/bin/sh
 
-echo "Entrypoint script started!" # Debug message
+echo "Entrypoint script started!"
+echo "DEBUG: This is the simplified entrypoint.sh"
+echo "DEBUG: PATH is: $PATH"
+echo "DEBUG: FLASK_APP is: $FLASK_APP"
+echo "DEBUG: FLASK_CONFIG is: $FLASK_CONFIG"
+echo "DEBUG: PROD_DATABASE_URL is: $PROD_DATABASE_URL"
 
-# Exit immediately if a command exits with a non-zero status.
-set -e
-
-# Run database migrations
-echo "Running database migrations..."
-python run_migrations.py
-echo "Migrations complete."
-
-# Print a message and start the main application
-echo "Starting application server..."
-waitress-serve --host=0.0.0.0 --port=${PORT} run:app
+# This script will now just exit after printing debug info
+# We expect Render to mark the service unhealthy or restart it.
+# We are looking for these debug messages in the logs.
+exit 0
