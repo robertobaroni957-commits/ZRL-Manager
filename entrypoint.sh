@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "Entrypoint script started!" # Debug message
+
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
