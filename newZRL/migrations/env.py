@@ -17,15 +17,10 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, '..', '..'))
 alembic_ini_path = os.path.join(project_root, 'alembic.ini')
 
-if os.path.exists(alembic_ini_path):
-    fileConfig(alembic_ini_path)
-else:
-    # Fallback if the above path doesn't exist, log an error or handle
-    logging.error(f"alembic.ini not found at expected path: {alembic_ini_path}")
-    # Or, if config.config_file_name is expected to be correct in some other context
-    # fileConfig(config.config_file_name)
-    raise FileNotFoundError(f"alembic.ini not found at {alembic_ini_path}") # Ensure error is clear
+# Explicitly set the config_file_name for the Alembic Config object
+config.config_file_name = alembic_ini_path
 
+fileConfig(config.config_file_name)
 logger = logging.getLogger('alembic.env')
 
 
