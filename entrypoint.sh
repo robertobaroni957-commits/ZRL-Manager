@@ -3,9 +3,9 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
-# Print a message and run database migrations
+# Run database migrations
 echo "Running database migrations..."
-flask db upgrade
+python run_migrations.py
 echo "Migrations complete."
 
 # Print a message and start the main application
