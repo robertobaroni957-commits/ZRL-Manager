@@ -3,7 +3,7 @@ services:
     name: zrl-manager
     env: python
     plan: free
-    buildCommand: "pip install -r requirements.txt && flask db upgrade"
+    buildCommand: "pip install -r requirements.txt"
     startCommand: "waitress-serve --host=0.0.0.0 --port=${PORT} run:app"
     envVars:
       - key: FLASK_CONFIG
@@ -17,5 +17,5 @@ services:
 
   - type: db
     name: zrl-db
-    engine: postgres
+    engine: mysql
     plan: free
