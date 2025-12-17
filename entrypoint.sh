@@ -4,6 +4,12 @@
 set -e
 
 echo "==> Starting entrypoint.sh for ZRL Manager"
+echo "DEBUG: Checking SECRET_KEY..."
+if [ -n "$SECRET_KEY" ]; then
+    echo "DEBUG: SECRET_KEY is set (length: ${#SECRET_KEY})"
+else
+    echo "DEBUG: SECRET_KEY is NOT set!"
+fi
 
 # Ensure the virtual environment's python is used
 # This assumes the venv is created in .venv/
