@@ -3,8 +3,8 @@ services:
     name: zrl-manager
     env: python
     plan: free
-    buildCommand: "pip install -r requirements.txt && chmod +x ./entrypoint.sh"
-    startCommand: "sh ./entrypoint.sh"
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "bash -c "echo 'RENDER START COMMAND EXECUTED!' && sleep 5 && exit 0""
     envVars:
       - key: FLASK_CONFIG
         value: production
