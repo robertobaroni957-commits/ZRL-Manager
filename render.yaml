@@ -3,7 +3,7 @@ services:
     name: zrl-manager
     env: python
     plan: free
-    buildCommand: "pip install -r requirements.txt && cp entrypoint.sh . && cp alembic.ini . && chmod +x entrypoint.sh"
+    buildCommand: "pip install -r requirements.txt && cp entrypoint.sh . && cp alembic.ini . && cp -r newZRL/migrations newZRL/ && chmod +x entrypoint.sh"
     startCommand: "sh ./entrypoint.sh"
     envVars:
       - key: FLASK_CONFIG
