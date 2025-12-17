@@ -3,8 +3,8 @@ services:
     name: zrl-manager
     env: python
     plan: free
-    buildCommand: "pip install -r requirements.txt && flask db upgrade"
-    startCommand: "waitress-serve --host=0.0.0.0 --port=${PORT} run:app"
+    buildCommand: "pip install -r requirements.txt && chmod +x ./entrypoint.sh"
+    startCommand: "sh ./entrypoint.sh"
     envVars:
       - key: FLASK_CONFIG
         value: production
