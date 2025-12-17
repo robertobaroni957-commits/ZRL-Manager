@@ -10,17 +10,22 @@ from alembic import context
 # access to the values within the .ini file in use.
 config = context.config
 
-# Interpret the config file for Python logging.
-# This line sets up loggers basically.
 # Dynamically get the path to alembic.ini in the project root
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(current_dir, '..', '..'))
 alembic_ini_path = os.path.join(project_root, 'alembic.ini')
 
-# Explicitly set the config_file_name for the Alembic Config object
+# Explicitly set the config_file_name for the Alembic Config object (for internal Alembic use)
 config.config_file_name = alembic_ini_path
 
-fileConfig(config.config_file_name)
+# Interpret the config file for Python logging.
+# Pass the absolute path directly to fileConfig
+if os.path.exists(alembic_ini_path):
+    fileConfig(alembic_ini_path)
+else:
+    logging.error(f"alembic.ini not found at expected path: {alembic_ini_path}")
+    raise FileNotFoundError(f"Alembic INI file not found at {alembic_ini_path}. Ensure it's in the project root and deployed.")
+
 logger = logging.getLogger('alembic.env')
 
 
