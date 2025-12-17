@@ -2,7 +2,7 @@
 import os
 import logging
 from flask_migrate import upgrade
-from newZRL import create_app, db
+from newZRL import create_app
  
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)

@@ -1,11 +1,11 @@
 # newZRL/__init__.py
-import logging
 import sys # Added import
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_cors import CORS
 from flasgger import Flasgger
+from flask_migrate import Migrate # Import Flask-Migrate
 
 # -----------------------------
 # Inizializza estensioni
@@ -16,6 +16,7 @@ login_manager.login_view = "auth.login"
 login_manager.login_message_category = "warning"
 cors = CORS()
 swagger = Flasgger()
+migrate = Migrate() # Initialize Migrate extension
 
 # User loader per Flask-Login (ora definito al top-level)
 from newZRL.models.user import User # Moved this import here
@@ -68,6 +69,7 @@ def create_app(config_name="development"):
     login_manager.init_app(app)
     cors.init_app(app)
     swagger.init_app(app)
+    migrate.init_app(app, db) # Initialize Migrate with the app and db
     
     # -----------------------------
     # HEALTH CHECK per Render

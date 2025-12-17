@@ -3,21 +3,7 @@ import os
 import logging
 import sys
 from waitress import serve
-from newZRL import create_app, db # Ensure db is imported if used directly here, but it's passed to create_app
-from flask_migrate import Migrate # Import Flask-Migrate
-
-# Configure logging for the Waitress server
-# This ensures that logs are always directed to stdout
-logging.basicConfig(
-    level=logging.INFO, # Or logging.DEBUG if more verbose output is needed
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    stream=sys.stdout
-)
-
-app = create_app(os.getenv("FLASK_CONFIG") or "development")
-
-# Initialize Flask-Migrate
-migrate = Migrate(app, db) # Initialize Migrate with the app and db
+from newZRL import create_app, db 
 
 if __name__ == "__main__":
     if os.environ.get("FLASK_DEBUG") == "1":
