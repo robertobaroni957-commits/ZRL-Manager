@@ -4,7 +4,7 @@ from waitress import serve
 from newZRL import create_app
 
 # Crea l'app
-app = create_app("production")  # o "development" se vuoi
+app = create_app("production") 
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
