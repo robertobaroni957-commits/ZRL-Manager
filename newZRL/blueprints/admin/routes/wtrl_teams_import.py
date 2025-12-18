@@ -4,6 +4,19 @@ from datetime import datetime
 from flask import render_template, request, flash, redirect, url_for, current_app
 from flask_login import login_required
 import time
+import logging # Import logging
+
+# Configure a logger for this module
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.ERROR) # Only log errors from this module
+# Create a file handler for the error log
+log_dir = os.path.join(os.path.abspath(os.path.dirname(__file__)), '..', '..', '..', 'logs')
+os.makedirs(log_dir, exist_ok=True)
+file_handler = logging.FileHandler(os.path.join(log_dir, 'wtrl_api_errors.log'))
+file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+logger.addHandler(file_handler)
+
+
 # Assicurati che questi siano importati correttamente
 from newZRL import db
 from newZRL.models.team import Team
@@ -65,10 +78,12 @@ def import_wtrl_teams_and_riders_from_api():
                 trc_list = [line.strip() for line in f if line.strip()]
         except FileNotFoundError:
             flash("⚠️ File XXXteam_trc_list.txt non trovato. Assicurati che esista e contenga gli ID TRC.", "danger")
+            logger.error(f"FileNotFoundError: XXXteam_trc_list.txt not found at {trc_list_file}")
             return redirect(url_for("admin_bp.wtrl_teams_page"))
 
         if not trc_list:
             flash("⚠️ Nessun TRC trovato nel file XXXteam_trc_list.txt.", "warning")
+            logger.warning(f"No TRC IDs found in {trc_list_file}")
             return redirect(url_for("admin_bp.wtrl_teams_page"))
 
         teams_saved = 0
@@ -85,6 +100,10 @@ def import_wtrl_teams_and_riders_from_api():
             "Cookie": current_app.config["WTRL_API_COOKIE"],
         }
 
+        # Directory to save API responses
+        response_save_dir = os.path.join(current_app.root_path, "data", "wtrl_json")
+        os.makedirs(response_save_dir, exist_ok=True)
+
         for trc_id in trc_list:
             print(f"--- Processing TRC: {trc_id} ---") # Debug print
             team_api_url = f"{wtrl_api_base_url}{trc_id}"
@@ -92,6 +111,13 @@ def import_wtrl_teams_and_riders_from_api():
                 resp = requests.get(team_api_url, headers=headers, timeout=12)
                 resp.raise_for_status() # Raise HTTPError for bad responses (4xx or 5xx)
                 data = resp.json()
+
+                # Save the raw API response for inspection
+                response_file_path = os.path.join(response_save_dir, f"team_{trc_id}.json")
+                with open(response_file_path, "w", encoding="utf-8") as f:
+                    json.dump(data, f, indent=4)
+                logger.info(f"Saved API response for TRC {trc_id} to {response_file_path}")
+
 
                 meta = data.get("meta", {})
                 
@@ -121,6 +147,7 @@ def import_wtrl_teams_and_riders_from_api():
                 trc = safe_int(trc_id, default=None)
                 if trc is None:
                     flash(f"[WTRL Teams Import] TRC {trc_id} saltato: TRC non valido.", "warning")
+                    logger.warning(f"Skipped TRC {trc_id}: invalid TRC ID.")
                     continue
 
                 team = Team.query.filter_by(trc=trc).first()
@@ -146,7 +173,8 @@ def import_wtrl_teams_and_riders_from_api():
                         created_at=datetime.utcnow()
                     )
                     db.session.add(team)
-                    print(f"[WTRL Teams Import] Created Team: {team.name} (TRC: {team.trc})")
+                    logger.info(f"[WTRL Teams Import] Created Team: {team.name} (TRC: {team.trc})")
+                    print(f"[WTRL Teams Import] Created Team: {team.name} (TRC: {team.trc})") # Debug print
                 else:
                     team.name = team_name
                     team.division = division
@@ -165,12 +193,15 @@ def import_wtrl_teams_and_riders_from_api():
                     team.captain_name = captain_name_val
                     team.captain_profile_id = captain_profile_id
                     team.updated_at = datetime.utcnow()
-                    print(f"[WTRL Teams Import] Updated Team: {team.name} (TRC: {team.trc})")
+                    logger.info(f"[WTRL Teams Import] Updated Team: {team.name} (TRC: {team.trc})")
+                    print(f"[WTRL Teams Import] Updated Team: {team.name} (TRC: {team.trc})") # Debug print
                 teams_saved += 1
 
                 # --- 2. Importa e Aggiorna Rider ---
                 for m in data.get("riders", []):
                     print(f"[WTRL Teams Import] Rider in Team API JSON: name={m.get('name')}, profileId={m.get('profileId')}, zid={m.get('zid')}, zwid={m.get('zwid')}")
+                    logger.info(f"[WTRL Teams Import] Rider in Team API JSON: name={m.get('name')}, profileId={m.get('profileId')}, zid={m.get('zid')}, zwid={m.get('zwid')}")
+
 
                     profile_id_source = m.get("zid") or m.get("zwid") or m.get("profileId")
                     
@@ -179,6 +210,7 @@ def import_wtrl_teams_and_riders_from_api():
                     if correct_profile_id_int is None:
                         skipped_riders.append(f"Rider senza profileId valido in TRC {trc}")
                         flash(f"[WTRL Teams Import] Skipped rider in TRC {trc}: Missing or invalid profileId.", "warning")
+                        logger.warning(f"Skipped rider in TRC {trc}: Missing or invalid profileId for data {m}")
                         continue
 
                     rider_id = f"{trc}/{correct_profile_id_int}" 
@@ -218,6 +250,7 @@ def import_wtrl_teams_and_riders_from_api():
                             created_at=datetime.utcnow()
                         )
                         db.session.add(rider)
+                        logger.info(f"[WTRL Teams Import] Created Rider: {rider.name} (Profile ID: {rider.profile_id}, TRC: {rider.team_trc})")
                         print(f"[WTRL Teams Import] Created Rider: {rider.name} (Profile ID: {rider.profile_id}, TRC: {rider.team_trc})")
                     else:
                         rider.team_trc = trc
@@ -238,6 +271,7 @@ def import_wtrl_teams_and_riders_from_api():
                         rider.appearances_season = appearances_season_val
                         rider.user_id = m.get("userId")
                         rider.updated_at = datetime.utcnow()
+                        logger.info(f"[WTRL Teams Import] Updated Rider: {rider.name} (Profile ID: {rider.profile_id}, TRC: {rider.team_trc})")
                         print(f"[WTRL Teams Import] Updated Rider: {rider.name} (Profile ID: {rider.profile_id}, TRC: {rider.team_trc})")
                     riders_saved += 1
             
@@ -248,15 +282,18 @@ def import_wtrl_teams_and_riders_from_api():
             except requests.exceptions.RequestException as e:
                 db.session.rollback()
                 flash(f"⚠️ Errore fetchando TRC {trc_id} dall'API: {str(e)}. Rollback eseguito. **Il ciclo dovrebbe continuare.**", "danger")
+                logger.error(f"Error fetching TRC {trc_id} from API: {str(e)}", exc_info=True)
             except Exception as e:
                 db.session.rollback()
                 flash(f"⚠️ Errore critico importando TRC {trc_id}: {str(e)}. Rollback eseguito. **Il ciclo dovrebbe continuare.**", "danger")
+                logger.error(f"Critical error importing TRC {trc_id}: {str(e)}", exc_info=True)
                 
         
         final_message = f"✅ Import completato: {teams_saved} team, {riders_saved} riders salvati."
         if skipped_riders:
             final_message += f" Attenzione: {len(skipped_riders)} ciclisti saltati (profileId mancante o non valido)."
         print(final_message)
+        logger.info(final_message)
         
         flash(final_message, "info")
 
@@ -264,6 +301,7 @@ def import_wtrl_teams_and_riders_from_api():
     except Exception as e:
         db.session.rollback()
         flash(f"❌ Si è verificato un errore inatteso durante l'importazione: {str(e)}", "danger")
+        logger.critical(f"Unexpected error during import: {str(e)}", exc_info=True)
         return redirect(url_for("admin_bp.wtrl_teams_page"))
 
 
