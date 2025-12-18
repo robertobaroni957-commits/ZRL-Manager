@@ -71,6 +71,11 @@ def create_app(config_name="development"):
     cors.init_app(app)
     swagger.init_app(app)
     migrate.init_app(app, db) # Initialize Migrate with the app and db
+
+    # Chiude la sessione del database al termine di ogni richiesta
+    @app.teardown_appcontext
+    def shutdown_session(exception=None):
+        db.session.remove()
     
     # -----------------------------
     # HEALTH CHECK per Render
