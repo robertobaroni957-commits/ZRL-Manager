@@ -56,6 +56,16 @@ import requests # Added this import
 @login_required
 def import_wtrl_teams_and_riders_from_api():
     """Importa o aggiorna i dati dei team e dei rider WTRL direttamente dall'API."""
+    # ... (existing code) ...
+
+@admin_bp.route("/wtrl_teams")
+@login_required
+def wtrl_teams_page():
+    """Renders the WTRL Teams page, likely to display imported teams."""
+    # This route will eventually fetch and display teams from the database.
+    # For now, it just renders the template.
+    return render_template("admin/wtrl_teams.html")
+
     # Read TRC IDs from the local file
     trc_list_file = os.path.join(current_app.root_path, "..", "data", "XXXteam_trc_list.txt")
     trc_list = []
@@ -268,4 +278,4 @@ def import_wtrl_teams_and_riders_from_api():
     
     flash(final_message, "info") # Flash still used for web interface
 
-    return redirect(url_for("admin_bp.wtrl_rankings_page")) # Redirect to rankings page
+    return redirect(url_for("admin_bp.wtrl_teams_page")) # Redirect to teams page
