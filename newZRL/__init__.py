@@ -82,7 +82,7 @@ def create_app(config_name="development"):
     # -----------------------------
     # Blueprint
     # -----------------------------
-    from newZRL.blueprints.auth.routes import auth_bp
+    # from newZRL.blueprints.auth.routes import auth_bp
     from newZRL.blueprints.main.routes import main_bp
     from newZRL.blueprints.api.routes import api_bp # Added api_bp
     from newZRL.blueprints.admin.bp import admin_bp
@@ -93,7 +93,7 @@ def create_app(config_name="development"):
     # -----------------------------
     # Registrazione blueprint
     # -----------------------------
-    app.register_blueprint(auth_bp)
+    # app.register_blueprint(auth_bp)
     app.register_blueprint(main_bp)
     app.register_blueprint(api_bp) # Registered api_bp
     app.register_blueprint(admin_bp, url_prefix="/admin")
