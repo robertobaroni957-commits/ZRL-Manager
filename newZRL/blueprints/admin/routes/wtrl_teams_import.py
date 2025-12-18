@@ -52,7 +52,7 @@ def safe_bool_to_int(val, default=0):
 
 import requests # Added this import
 
-@admin_bp.route("/wtrl_import/import_teams", methods=["GET"]) # Changed route and method
+@admin_bp.route("/wtrl_import/import_teams", methods=["GET"])
 @login_required
 def import_wtrl_teams_and_riders_from_api():
     """Importa o aggiorna i dati dei team e dei rider WTRL direttamente dall'API."""
@@ -75,7 +75,6 @@ def import_wtrl_teams_and_riders_from_api():
         riders_saved = 0
         skipped_riders = []
         
-        # Season number for the API call (can be made dynamic later if needed)
         season_number = "17" 
         wtrl_api_base_url = f"https://www.wtrl.racing/api/zrl/{season_number}/teams/"
 
@@ -94,7 +93,7 @@ def import_wtrl_teams_and_riders_from_api():
                 resp.raise_for_status() # Raise HTTPError for bad responses (4xx or 5xx)
                 data = resp.json()
 
-                meta = data.get("meta", {}) # The JSON structure seems to be similar to the old local files
+                meta = data.get("meta", {})
                 
                 # --- 1. Estrazione Campi Team ---
                 division = meta.get("division")
@@ -119,7 +118,7 @@ def import_wtrl_teams_and_riders_from_api():
                 members_remaining = safe_int(meta.get("membersRemaining"), default=0)
 
                 # CREA/AGGIORNA TEAM
-                trc = safe_int(trc_id, default=None) # Use trc_id from the list
+                trc = safe_int(trc_id, default=None)
                 if trc is None:
                     flash(f"[WTRL Teams Import] TRC {trc_id} saltato: TRC non valido.", "warning")
                     continue
@@ -127,7 +126,7 @@ def import_wtrl_teams_and_riders_from_api():
                 team = Team.query.filter_by(trc=trc).first()
                 if not team:
                     team = Team(
-                        trc=trc, # TRC è un INT
+                        trc=trc,
                         name=team_name,
                         division=division,
                         wtrl_team_id=wtrl_team_id,
@@ -147,7 +146,7 @@ def import_wtrl_teams_and_riders_from_api():
                         created_at=datetime.utcnow()
                     )
                     db.session.add(team)
-                    print(f"[WTRL Teams Import] Created Team: {team.name} (TRC: {team.trc})") # Debug print
+                    print(f"[WTRL Teams Import] Created Team: {team.name} (TRC: {team.trc})")
                 else:
                     team.name = team_name
                     team.division = division
@@ -166,18 +165,15 @@ def import_wtrl_teams_and_riders_from_api():
                     team.captain_name = captain_name_val
                     team.captain_profile_id = captain_profile_id
                     team.updated_at = datetime.utcnow()
-                    print(f"[WTRL Teams Import] Updated Team: {team.name} (TRC: {team.trc})") # Debug print
+                    print(f"[WTRL Teams Import] Updated Team: {team.name} (TRC: {team.trc})")
                 teams_saved += 1
 
                 # --- 2. Importa e Aggiorna Rider ---
                 for m in data.get("riders", []):
-                    # Debug print for available rider IDs from team API
                     print(f"[WTRL Teams Import] Rider in Team API JSON: name={m.get('name')}, profileId={m.get('profileId')}, zid={m.get('zid')}, zwid={m.get('zwid')}")
 
-                    # Prioritize zid, then zwid, then profileId
                     profile_id_source = m.get("zid") or m.get("zwid") or m.get("profileId")
                     
-                    # Conversione sicura di Profile ID
                     correct_profile_id_int = safe_int(profile_id_source, default=None)
                     
                     if correct_profile_id_int is None:
@@ -185,17 +181,14 @@ def import_wtrl_teams_and_riders_from_api():
                         flash(f"[WTRL Teams Import] Skipped rider in TRC {trc}: Missing or invalid profileId.", "warning")
                         continue
 
-                    # COERENZA: Costruzione della chiave primaria composita (TRC/ProfileID)
                     rider_id = f"{trc}/{correct_profile_id_int}" 
                     rider = WTRL_Rider.query.filter_by(id=rider_id).first()
                         
-                    # Conversione robusta per i valori float
                     zftp_val = safe_float(m.get("zftp"), default=None)
                     zftpw_val = safe_float(m.get("zftpw"), default=None)
                     zmap_val = safe_float(m.get("zmap"), default=None)
                     zmapw_val = safe_float(m.get("zmapw"), default=None)
 
-                    # Campi interi, usiamo safe_int con default 0
                     riderpoints_val = safe_int(m.get("riderpoints"), default=0)
                     teams_val = safe_int(m.get("teams"), default=0)
                     appearances_round_val = safe_int(m.get("appearancesRound"), default=0)
@@ -205,8 +198,8 @@ def import_wtrl_teams_and_riders_from_api():
                     if not rider:
                         rider = WTRL_Rider(
                             id=rider_id,
-                            team_trc=trc,                       # <-- TRC INT corretto dal meta
-                            profile_id=correct_profile_id_int,  # <-- Profile ID INT corretto
+                            team_trc=trc,
+                            profile_id=correct_profile_id_int,
                             tmuid=m.get("tmuid") or None,
                             name=m.get("name"),
                             avatar=m.get("avatar") or None,
@@ -225,11 +218,10 @@ def import_wtrl_teams_and_riders_from_api():
                             created_at=datetime.utcnow()
                         )
                         db.session.add(rider)
-                        print(f"[WTRL Teams Import] Created Rider: {rider.name} (Profile ID: {rider.profile_id}, TRC: {rider.team_trc})") # Debug print
+                        print(f"[WTRL Teams Import] Created Rider: {rider.name} (Profile ID: {rider.profile_id}, TRC: {rider.team_trc})")
                     else:
-                        # Aggiorna rider esistente
-                        rider.team_trc = trc                       # <-- TRC INT corretto dal meta
-                        rider.profile_id = correct_profile_id_int  # <-- Profile ID INT corretto
+                        rider.team_trc = trc
+                        rider.profile_id = correct_profile_id_int
                         rider.tmuid = m.get("tmuid") or None
                         rider.name = m.get("name")
                         rider.avatar = m.get("avatar") or None
@@ -246,11 +238,11 @@ def import_wtrl_teams_and_riders_from_api():
                         rider.appearances_season = appearances_season_val
                         rider.user_id = m.get("userId")
                         rider.updated_at = datetime.utcnow()
-                        print(f"[WTRL Teams Import] Updated Rider: {rider.name} (Profile ID: {rider.profile_id}, TRC: {rider.team_trc})") # Debug print
+                        print(f"[WTRL Teams Import] Updated Rider: {rider.name} (Profile ID: {rider.profile_id}, TRC: {rider.team_trc})")
                     riders_saved += 1
-                
-                db.session.commit() # Commit after each team for now.
-                time.sleep(1) # Add a 1-second delay to avoid hitting API rate limits
+            
+                db.session.commit()
+                time.sleep(1)
 
 
             except requests.exceptions.RequestException as e:
@@ -264,15 +256,16 @@ def import_wtrl_teams_and_riders_from_api():
         final_message = f"✅ Import completato: {teams_saved} team, {riders_saved} riders salvati."
         if skipped_riders:
             final_message += f" Attenzione: {len(skipped_riders)} ciclisti saltati (profileId mancante o non valido)."
-        print(final_message) # Debug print
+        print(final_message)
         
-        flash(final_message, "info") # Flash still used for web interface
+        flash(final_message, "info")
 
-        return redirect(url_for("admin_bp.wtrl_teams_page")) # Redirect to teams page
-    except Exception as e: # <--- Start of the new except block for general errors
+        return redirect(url_for("admin_bp.wtrl_teams_page"))
+    except Exception as e:
         db.session.rollback()
         flash(f"❌ Si è verificato un errore inatteso durante l'importazione: {str(e)}", "danger")
-        return redirect(url_for("admin_bp.wtrl_teams_page")) # Redirect to teams page in case of a general error
+        return redirect(url_for("admin_bp.wtrl_teams_page"))
+
 
 @admin_bp.route("/wtrl_teams")
 @login_required
