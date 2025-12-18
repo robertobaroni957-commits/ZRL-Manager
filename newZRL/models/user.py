@@ -1,5 +1,6 @@
 from flask_login import UserMixin 
 from newZRL import db
+import traceback # Import traceback
 
 class User(db.Model, UserMixin):
     __tablename__ = "users"
@@ -16,6 +17,15 @@ class User(db.Model, UserMixin):
     team = db.relationship("Team", backref="users", lazy=True, foreign_keys=[team_trc])
 
     active = db.Column(db.Boolean, default=True)
+
+    # DEBUG: AGGIUNGI QUESTO BLOCCO TEMPORANEAMENTE
+    @property
+    def query(self):
+        print("\n--- DEBUG: Accessing User.query property ---")
+        traceback.print_stack(limit=5) # Print the last 5 calls
+        print("--- END DEBUG ---\n")
+        return super().query
+    # FINE BLOCCO DEBUG
 
     def __repr__(self):
         return f"<User {self.email} ({self.role})>"
