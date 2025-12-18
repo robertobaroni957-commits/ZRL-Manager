@@ -56,6 +56,7 @@ import requests # Added this import
 @login_required
 def import_wtrl_teams_and_riders_from_api():
     """Importa o aggiorna i dati dei team e dei rider WTRL direttamente dall'API."""
+    try: # <--- Start of the new try block for the entire function
     # ... (existing code) ...
 
 @admin_bp.route("/wtrl_teams")
@@ -265,10 +266,10 @@ def wtrl_teams_page():
 
         except requests.exceptions.RequestException as e:
             db.session.rollback()
-            print(f"⚠️ Errore fetchando TRC {trc_id} dall'API: {str(e)}. Rollback eseguito. **Il ciclo dovrebbe continuare.**") # Changed flash to print
+            flash(f"⚠️ Errore fetchando TRC {trc_id} dall'API: {str(e)}. Rollback eseguito. **Il ciclo dovrebbe continuare.**", "danger")
         except Exception as e:
             db.session.rollback()
-            print(f"⚠️ Errore critico importando TRC {trc_id}: {str(e)}. Rollback eseguito. **Il ciclo dovrebbe continuare.**") # Changed flash to print
+            flash(f"⚠️ Errore critico importando TRC {trc_id}: {str(e)}. Rollback eseguito. **Il ciclo dovrebbe continuare.**", "danger")
             
     
     final_message = f"✅ Import completato: {teams_saved} team, {riders_saved} riders salvati."
@@ -279,3 +280,7 @@ def wtrl_teams_page():
     flash(final_message, "info") # Flash still used for web interface
 
     return redirect(url_for("admin_bp.wtrl_teams_page")) # Redirect to teams page
+except Exception as e: # <--- Start of the new except block for general errors
+    db.session.rollback()
+    flash(f"❌ Si è verificato un errore inatteso durante l'importazione: {str(e)}", "danger")
+    return redirect(url_for("admin_bp.wtrl_teams_page")) # Redirect to teams page in case of a general error
