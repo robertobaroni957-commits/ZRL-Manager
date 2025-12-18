@@ -1,6 +1,5 @@
 # export.py
 import io
-import pandas as pd
 from flask import request, send_file, render_template
 from flask_login import login_required
 from newZRL import db
@@ -374,6 +373,7 @@ def export_report():
     # ----------------------------
     if fmt == "csv":
         import pandas as pd
+        import pandas as pd
         df = pd.DataFrame(data, columns=columns)
         buf = io.BytesIO()
         df.to_csv(buf, index=False)
@@ -381,6 +381,7 @@ def export_report():
         return send_file(buf, download_name=f"{report_type}.csv", as_attachment=True)
 
     if fmt in ["xlsx", "excel"]:
+        import pandas as pd
         import pandas as pd
         df = pd.DataFrame(data, columns=columns)
         buf = io.BytesIO()
