@@ -1,6 +1,5 @@
 # run.py
 import os
-from waitress import serve
 from newZRL import create_app, db
 from newZRL.models.user import User
 from werkzeug.security import generate_password_hash
@@ -37,6 +36,7 @@ def create_user_command(email, password, profile_id, role):
 
 
 if __name__ == "__main__":
+    from waitress import serve
     port = int(os.environ.get("PORT", 5000))
 
     if os.environ.get("FLASK_DEBUG") == "1":
