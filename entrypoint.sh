@@ -38,6 +38,6 @@ echo "Database migrations complete."
 echo "Starting application server..."
 # Ensure Flask application is discoverable for waitress if not handled by run.py
 # If FLASK_APP is needed here, set it explicitly or ensure run.py creates the app directly.
-waitress-serve --host=0.0.0.0 --port=${PORT} run:app
+gunicorn --bind 0.0.0.0:${PORT} run:app
 
 echo "Entrypoint finished."
