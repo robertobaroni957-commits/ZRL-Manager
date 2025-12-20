@@ -30,7 +30,7 @@ def upgrade():
     sa.UniqueConstraint('wtrl_rider_id')
     )
     with op.batch_alter_table('users', schema=None) as batch_op:
-        batch_op.drop_constraint(batch_op.f('users_ibfk_1'), type_='foreignkey')
+        # batch_op.drop_constraint(batch_op.f('users_ibfk_1'), type_='foreignkey')
         batch_op.drop_column('team_trc')
 
     # ### end Alembic commands ###
