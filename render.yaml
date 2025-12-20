@@ -10,7 +10,4 @@ services:
         value: production
       - key: SECRET_KEY
 
-  - type: db
-    name: zrl-db
-    engine: postgresql
-    plan: free
+
