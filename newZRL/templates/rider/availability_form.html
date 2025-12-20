@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+{% block title %}La tua Disponibilità{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .day-card {
+        border: 1px solid #dee2e6;
+        border-radius: .25rem;
+        margin-bottom: .5rem;
+        padding: .75rem;
+        background-color: #f8f9fa;
+    }
+    .day-card.selected {
+        border-color: #0d6efd;
+        background-color: #e9f5ff;
+    }
+    .time-inputs {
+        display: flex;
+        gap: .5rem;
+        align-items: center;
+    }
+</style>
+{% endblock %}
+
+{% block page_title %}
+<h1 class="fw-bold text-primary m-0">
+  <i class="bi bi-calendar-check-fill me-2"></i>
+  La tua Disponibilità
+</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container py-2" style="max-width: 800px;">
+
+    <div id="dynamic-flash-messages"></div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, msg in messages %}
+                <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show" role="alert">
+                    {{ msg }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <p class="mb-4">Qui puoi impostare gli orari in cui sei disponibile per gare o allenamenti. Le informazioni verranno utilizzate per aiutarti nella composizione delle squadre.</p>
+
+    <div class="card p-3">
+        <form id="availabilityForm">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}"> {# Assuming CSRF is handled by Flask-WTF or similar #}
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Seleziona i giorni e gli orari di disponibilità:</label>
+                <div id="days-container">
+                    {# Days will be rendered dynamically by JavaScript #}
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="notes" class="form-label">Note aggiuntive (es. preferenze per tipo di gara, limitazioni specifiche):</label>
+                <textarea class="form-control" id="notes" name="notes" rows="3">{{ current_notes }}</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Salva Disponibilità</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const days = ["Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"];
+        const daysContainer = document.getElementById('days-container');
+        const availabilityForm = document.getElementById('availabilityForm');
+        const notesTextarea = document.getElementById('notes');
+
+        let currentAvailability = {{ current_availability | tojson | safe }};
+        if (typeof currentAvailability !== 'object' || currentAvailability === null) {
+            currentAvailability = {};
+        }
+
+        const militaryTimeToAmPm = (militaryTime) => {
+            if (!militaryTime) return '';
+            const [hours, minutes] = militaryTime.split(':').map(Number);
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const displayHours = hours % 12 || 12;
+            return `${displayHours}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+        };
+
+        const amPmToMilitaryTime = (amPmTime) => {
+            if (!amPmTime) return '';
+            let [time, ampm] = amPmTime.split(' ');
+            let [hours, minutes] = time.split(':').map(Number);
+            if (ampm === 'PM' && hours !== 12) hours += 12;
+            if (ampm === 'AM' && hours === 12) hours = 0;
+            return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+        };
+
+        // Function to create time options
+        const createTimeOptions = (selectedTime = "") => {
+            let options = '';
+            for (let h = 0; h < 24; h++) {
+                for (let m = 0; m < 60; m += 30) {
+                    const military = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+                    const display = militaryTimeToAmPm(military);
+                    const selected = military === selectedTime ? 'selected' : '';
+                    options += `<option value="${military}" ${selected}>${display}</option>`;
+                }
+            }
+            return options;
+        };
+
+        days.forEach(day => {
+            const dayKey = day.toLowerCase().replace('ì', 'i'); // e.g., "lunedi"
+            const isAvailable = currentAvailability[dayKey] !== undefined && currentAvailability[dayKey] !== null;
+
+            const dayCard = document.createElement('div');
+            dayCard.className = `day-card ${isAvailable ? 'selected' : ''}`;
+            dayCard.innerHTML = `
+                <div class="form-check">
+                    <input class="form-check-input day-checkbox" type="checkbox" id="${dayKey}-checkbox" ${isAvailable ? 'checked' : ''}>
+                    <label class="form-check-label fw-semibold" for="${dayKey}-checkbox">${day}</label>
+                </div>
+                <div class="time-inputs mt-2" style="display: ${isAvailable ? 'flex' : 'none'};">
+                    <label for="${dayKey}-start" class="form-label mb-0 small">Da:</label>
+                    <select class="form-select form-select-sm" id="${dayKey}-start">
+                        ${createTimeOptions(isAvailable ? currentAvailability[dayKey].start : '')}
+                    </select>
+                    <label for="${dayKey}-end" class="form-label mb-0 small">A:</label>
+                    <select class="form-select form-select-sm" id="${dayKey}-end">
+                        ${createTimeOptions(isAvailable ? currentAvailability[dayKey].end : '')}
+                    </select>
+                </div>
+            `;
+            daysContainer.appendChild(dayCard);
+
+            const checkbox = dayCard.querySelector(`#${dayKey}-checkbox`);
+            const timeInputsDiv = dayCard.querySelector('.time-inputs');
+
+            checkbox.addEventListener('change', () => {
+                dayCard.classList.toggle('selected', checkbox.checked);
+                timeInputsDiv.style.display = checkbox.checked ? 'flex' : 'none';
+            });
+        });
+
+        availabilityForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const availabilityData = {};
+            days.forEach(day => {
+                const dayKey = day.toLowerCase().replace('ì', 'i');
+                const checkbox = document.getElementById(`${dayKey}-checkbox`);
+                if (checkbox.checked) {
+                    const startTime = document.getElementById(`${dayKey}-start`).value;
+                    const endTime = document.getElementById(`${dayKey}-end`).value;
+                    if (startTime && endTime) {
+                        availabilityData[dayKey] = { start: startTime, end: endTime };
+                    } else {
+                        // If times are not set for an available day, mark as available but unspecified times
+                        availabilityData[dayKey] = null; // Or {start: "00:00", end: "23:59"} depending on preference
+                    }
+                } else {
+                    availabilityData[dayKey] = null; // Explicitly mark as not available
+                }
+            });
+
+            const payload = {
+                availability_data: availabilityData,
+                notes: notesTextarea.value.trim()
+            };
+
+            const csrfToken = document.querySelector('input[name="csrf_token"]').value;
+
+            fetch("{{ url_for('rider.set_availability') }}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Reload the page to display the server-side flash message
+                    window.location.reload();
+                } else {
+                    // Show error message dynamically for a failed request
+                    flash("❌ " + data.message, "danger");
+                }
+            })
+            .catch(error => {
+                console.error('Error saving availability:', error);
+                flash("❌ Errore durante il salvataggio della disponibilità.", "danger");
+            });
+        });
+
+        function flash(message, category) {
+            const container = document.getElementById('dynamic-flash-messages');
+            if (!container) return; // Fail gracefully if container not found
+
+            const el = document.createElement('div');
+            el.className = `alert alert-${category} alert-dismissible fade show`;
+            el.role = 'alert';
+            el.innerHTML = `${message} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+
+            // Clear previous messages and add the new one
+            container.innerHTML = '';
+            container.appendChild(el);
+
+            // Auto-dismiss
+            setTimeout(() => {
+                if (container.contains(el)) {
+                    container.removeChild(el);
+                }
+            }, 5000);
+        }
+    });
+</script>
+{% endblock %}

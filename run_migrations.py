@@ -3,6 +3,9 @@ import os
 import logging
 from flask_migrate import upgrade
 from newZRL import create_app
+from dotenv import load_dotenv
+
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)

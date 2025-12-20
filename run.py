@@ -5,6 +5,9 @@ from newZRL import create_app, db
 from newZRL.models.user import User
 from werkzeug.security import generate_password_hash
 import click
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Crea l'app
 app = create_app(os.environ.get("FLASK_ENV", "production")) 

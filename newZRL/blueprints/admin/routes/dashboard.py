@@ -1,5 +1,5 @@
-from flask import render_template
-from flask_login import login_required
+from flask import render_template, session # Import session
+from flask_login import login_required, current_user # Import current_user
 from datetime import date
 from newZRL import db
 from newZRL.blueprints.admin.bp import admin_bp
@@ -10,7 +10,7 @@ from newZRL.models.race_lineup import RaceLineup
 from newZRL.models.wtrl_rider import WTRL_Rider
 from newZRL.utils.race_utils import get_next_race_date
 from utils.auth_decorators import require_roles
-
+from newZRL.models.user import User # Import User model
 
 @admin_bp.route("/dashboard")
 @login_required
@@ -18,10 +18,10 @@ from utils.auth_decorators import require_roles
 def dashboard():
     current_time = date.today()
 
-    # Trova il round attivo
+    # Find the active round
     current_round = Round.query.filter_by(is_active=True).first()
 
-    # Carica le gare del round attivo
+    # Load races for the active round
     races = (
         Race.query.filter_by(round_id=current_round.id)
         .order_by(Race.race_date)
@@ -29,23 +29,39 @@ def dashboard():
         if current_round else []
     )
 
-    # Carica tutti i team
-    teams = Team.query.order_by(Team.name).all()
+    # Filter teams based on user role
+    if current_user.is_authenticated and current_user.role == "captain":
+        # For captains, find their team based on their profile_id
+        # Assuming current_user.profile_id holds the captain's profile ID
+        teams = Team.query.filter_by(captain_profile_id=current_user.profile_id).order_by(Team.name).all()
+        if not teams:
+            # If a captain has no assigned team, show an empty list
+            teams = []
+            flash("Non sei assegnato a nessun team come capitano.", "warning")
+    else:
+        # For admins, load all teams
+        teams = Team.query.order_by(Team.name).all()
 
-    # Pre-calcolo: lineup presente e prossima gara per ogni team
+    # Pre-calculation: lineup present and next race for each team
     for t in teams:
-        # Ha almeno una lineup registrata?
-        # Usa la colonna numerica team_trc senza join stringhe
+        # Has at least one registered lineup?
+        # Uses the numeric team_trc column without string join
         t.has_lineup = RaceLineup.query.join(WTRL_Rider).filter(WTRL_Rider.team_trc == t.trc).first() is not None
 
-        # Trova il capitano tramite captain_profile_id
+        # Find captain via captain_profile_id (already part of Team object)
         t.captain_name = "—"
         if t.captain_profile_id:
-            captain = WTRL_Rider.query.filter_by(profile_id=t.captain_profile_id).first()
-            if captain:
-                t.captain_name = captain.name
+            # Check if current_user.profile_id matches t.captain_profile_id
+            # This is already handled by filtering `teams` above
+            if t.captain_profile_id == current_user.profile_id and current_user.role == "captain":
+                t.captain_name = current_user.email.split('@')[0].capitalize() # Display a more friendly name
+            else:
+                captain_user = User.query.filter_by(profile_id=t.captain_profile_id).first()
+                if captain_user:
+                    t.captain_name = captain_user.email.split('@')[0].capitalize()
 
-        # Prossima gara programmata per il team
+
+        # Next scheduled race for the team
         t.next_race_date = get_next_race_date(t.trc)
 
     return render_template(

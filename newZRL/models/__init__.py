@@ -7,4 +7,5 @@ from .wtrl_rider import WTRL_Rider  # WTRL_Rider prima di RiderTeam
 from .rider import Rider
 from .race_lineup import RaceLineup
 from .user import User
+from .rider_availability import RiderAvailability
 from .wtrl import WTRLCompetition, WTRLLeague, WTRLDivision, WTRLRace

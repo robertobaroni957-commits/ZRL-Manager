@@ -1,11 +1,9 @@
 import os
 import logging
-from dotenv import load_dotenv
-
-load_dotenv()
 
 class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY")
+    WTF_CSRF_SECRET = os.environ.get("SECRET_KEY") # Ensure CSRF uses the same secret
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     LOGGING_LEVEL = logging.INFO
     WTRL_API_COOKIE = os.environ.get("WTRL_API_COOKIE")
@@ -14,6 +12,9 @@ class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get("DEV_DATABASE_URL")
     LOGGING_LEVEL = logging.DEBUG
+    SESSION_COOKIE_SECURE = False  # Allow session cookie over HTTP
+    SESSION_COOKIE_HTTPONLY = True # Prevent client-side JS access to cookie
+    SESSION_COOKIE_SAMESITE = 'Lax' # Allow session cookie to be sent on cross-site requests (e.g., embeds)
 
 class TestingConfig(Config):
     TESTING = True
@@ -34,8 +35,8 @@ class ProductionConfig(Config):
     if PA_DB_USER and PA_DB_PASSWORD and PA_DB_HOST and PA_DB_NAME:
         SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{PA_DB_USER}:{PA_DB_PASSWORD}@{PA_DB_HOST}/{PA_DB_NAME}"
     else:
-        # Fallback for Railway-like platforms or .env files
-        SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL") or os.environ.get("PROD_DATABASE_URL")
+        # For platforms like Render, Railway, etc., which provide a DATABASE_URL
+        SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
         
         # Heroku and other PaaS provide postgres URLs, which need to be updated for SQLAlchemy
         if SQLALCHEMY_DATABASE_URI and SQLALCHEMY_DATABASE_URI.startswith("postgres://"):

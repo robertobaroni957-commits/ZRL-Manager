@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Import in Corso{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Importazione in Corso...</h2>
+    <p>Per favore, non chiudere questa pagina. L'importazione è in esecuzione in background.</p>
+
+    <div class="progress" style="height: 30px;">
+        <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+    </div>
+
+    <div id="status-message" class="mt-3 alert alert-info">
+        Inizializzazione...
+    </div>
+
+    <div id="done-link" style="display: none;">
+        <a href="{{ url_for('admin_bp.wtrl_teams_page') }}" class="btn btn-success">Importazione Completata - Torna alla pagina dei Team</a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const progressBar = document.getElementById('progress-bar');
+        const statusMessage = document.getElementById('status-message');
+        const doneLink = document.getElementById('done-link');
+        let isRunning = true;
+
+        const pollStatus = () => {
+            if (!isRunning) {
+                return;
+            }
+
+            fetch("{{ url_for('admin_bp.get_import_status') }}")
+                .then(response => response.json())
+                .then(data => {
+                    // Update progress bar
+                    progressBar.style.width = data.progress + '%';
+                    progressBar.innerText = data.progress + '%';
+                    progressBar.setAttribute('aria-valuenow', data.progress);
+
+                    // Update status message
+                    statusMessage.innerText = data.message;
+
+                    // Check if the task is finished
+                    if (!data.is_running && data.progress === 100) {
+                        isRunning = false;
+                        progressBar.classList.remove('progress-bar-animated');
+                        progressBar.classList.add('bg-success');
+                        doneLink.style.display = 'block';
+                    } else if (!data.is_running && data.progress < 100) {
+                        // Handle case where import fails to start or stops prematurely
+                        isRunning = false;
+                        progressBar.classList.remove('progress-bar-animated');
+                        progressBar.classList.add('bg-danger');
+                        doneLink.style.display = 'block'; // Show link even on failure
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching import status:', error);
+                    statusMessage.innerText = 'Errore durante il recupero dello stato. Controlla la console.';
+                    statusMessage.className = 'mt-3 alert alert-danger';
+                    isRunning = false;
+                });
+        };
+
+        // Start polling every 2 seconds
+        const intervalId = setInterval(() => {
+            pollStatus();
+            if (!isRunning) {
+                clearInterval(intervalId);
+            }
+        }, 2000);
+    });
+</script>
+{% endblock %}

@@ -5,8 +5,12 @@
 <h1>WTRL Teams Importati</h1>
 
 <!-- FORM PER IMPORT -->
-<form method="GET" action="{{ url_for('admin_bp.import_wtrl_teams_and_riders_from_api') }}">
-    <button type="submit">Importa tutti i team e riders</button>
+<form method="GET" action="{{ url_for('admin_bp.import_wtrl_teams_and_riders_from_api') }}" class="mb-3">
+    <div class="mb-3">
+        <label for="season" class="form-label">Season:</label>
+        <input type="text" id="season" name="season" value="18" class="form-control w-25" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Importa Team e Rider per Stagione</button>
 </form>
 
 <hr>

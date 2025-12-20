@@ -124,12 +124,34 @@
 {% endblock %}
 
 {% block content %}
+{% set column_header_map = {
+    "profile_id": "ID Profilo",
+    "name": "Nome Rider",
+    "rider_name": "Nome Rider",
+    "member_status": "Status Membro",
+    "riderpoints": "Punti Rider",
+    "team_trc": "TRC Team",
+    "team_name": "Nome Team",
+    "team_category": "Cat. Team",
+    "category": "Cat.",
+    "status": "Status",
+    "team": "Team",
+    "n_riders": "Num. Rider",
+    "captain": "Capitano",
+    "season": "Stagione",
+    "class_id": "Classe",
+    "position": "Pos.",
+    "points": "Punti",
+    "race_date": "Data Gara",
+    "watts": "Watt",
+    "wkg": "W/Kg"
+} %}
 <div class="report-container">
 
   <!-- Header -->
   <div class="d-flex justify-content-between align-items-center mb-3">
     <div>
-      <h5 class="m-0 fw-bold">📊 Report Amministrativi</h5>
+      <h5 class="m-0 fw-bold">📊 {{ report_type|replace('_',' ')|title }} Report {% if current_user.role == 'captain' %} del mio Team{% endif %}</h5>
       {% if report_type == 'lineup' and race_date %}
         <small class="text-muted">Gara del {{ race_date }}</small>
       {% endif %}
@@ -156,6 +178,7 @@
         </div>
 
         {% if report_type in ['riders_compact', 'riders', 'lineup', 'team_composition', 'round_standings'] %}
+        {% if current_user.is_authenticated and current_user.role != 'captain' %}
         <div class="d-flex flex-column me-2">
           <label for="category" class="form-label small">Categoria</label>
           <select name="category" id="category" class="form-select form-select-sm">
@@ -166,8 +189,10 @@
           </select>
         </div>
         {% endif %}
+        {% endif %}
 
         {% if report_type in ['riders_compact', 'riders', 'team_composition'] %}
+        {% if current_user.is_authenticated and current_user.role != 'captain' %}
         <div class="d-flex flex-column me-2">
           <label for="team" class="form-label small">Team</label>
           <select name="team" id="team" class="form-select form-select-sm">
@@ -177,6 +202,7 @@
             {% endfor %}
           </select>
         </div>
+        {% endif %}
         {% endif %}
 
         <div class="d-flex flex-column">
@@ -189,12 +215,14 @@
       </form>
 
       <div class="d-flex align-items-center gap-2">
+        {% if current_user.is_authenticated and current_user.role != 'captain' %}
         <div class="export-buttons">
           <a title="Export HTML" href="{{ url_for('admin_bp.export_report', report_type=report_type, category=category_filter or '', team=team_filter or '', fmt='html') }}" class="btn btn-outline-secondary btn-sm">HTML</a>
           <a title="Export CSV" href="{{ url_for('admin_bp.export_report', report_type=report_type, category=category_filter or '', team=team_filter or '', fmt='csv') }}" class="btn btn-success btn-sm">CSV</a>
           <a title="Export XLSX" href="{{ url_for('admin_bp.export_report', report_type=report_type, category=category_filter or '', team=team_filter or '', fmt='xlsx') }}" class="btn btn-primary btn-sm">Excel</a>
           <a title="Export PDF" href="{{ url_for('admin_bp.export_report', report_type=report_type, category=category_filter or '', team=team_filter or '', fmt='pdf') }}" class="btn btn-danger btn-sm">PDF</a>
         </div>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -227,14 +255,14 @@
               <table class="table table-sm report-table mb-0">
                 <thead>
                   <tr class="{{ header_class }}">
-                    <th scope="col">Profile</th>
-                    <th scope="col">Cat.</th>
-                    <th scope="col">Name</th>
+                    <th scope="col">{{ column_header_map.get("profile_id", "Profile") }}</th>
+                    <th scope="col">{{ column_header_map.get("category", "Cat.") }}</th>
+                    <th scope="col">{{ column_header_map.get("name", "Name") }}</th>
                     {% if report_type == 'team_composition' %}
-                      <th scope="col">Punti</th>
+                      <th scope="col">{{ column_header_map.get("riderpoints", "Punti") }}</th>
                     {% endif %}
                     {% if report_type == 'lineup' %}
-                      <th scope="col">Data Gara</th>
+                      <th scope="col">{{ column_header_map.get("race_date", "Data Gara") }}</th>
                     {% endif %}
                   </tr>
                 </thead>
@@ -275,19 +303,7 @@
             <tr>
               {% for c in columns %}
                 <th scope="col">
-                  {% if c in ["profile_id", "category", "status", "riderpoints", "team_category"] %}
-                    {{ c.replace('_', ' ')|title }}
-                  {% elif c.startswith('Team') %}
-                    {{ c }}
-                  {% elif c == 'team' %}
-                    Team
-                  {% elif c == 'n_riders' %}
-                    N. Riders
-                  {% elif c == 'captain' %}
-                    Capitano
-                  {% else %}
-                    {{ c.replace('_', ' ')|title }}
-                  {% endif %}
+                  {{ column_header_map.get(c, c.replace('_', ' ')|title) }}
                 </th>
               {% endfor %}
             </tr>

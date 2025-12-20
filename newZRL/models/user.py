@@ -1,5 +1,6 @@
 from flask_login import UserMixin 
 from newZRL import db
+from newZRL.models.team import Team # Import Team model
 
 class User(db.Model, UserMixin):
     __tablename__ = "users"
@@ -9,11 +10,14 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(255), nullable=False)
     role = db.Column(db.String(50), default="user")
 
-    # ⚡ Cambiato da team_id → team_trc
-    team_trc = db.Column(db.Integer, db.ForeignKey("teams.trc"), nullable=True)
-
-    # Relazione aggiornata
-    team = db.relationship("Team", backref="users", lazy=True, foreign_keys=[team_trc])
+    # Relazione per identificare la squadra di cui l'utente è capitano
+    captain_of_team = db.relationship(
+        "Team",
+        primaryjoin="User.profile_id == foreign(Team.captain_profile_id)",
+        backref=db.backref("captain_user", uselist=False),
+        uselist=False, # Un capitano è associato a una sola squadra (come capitano)
+        lazy=True
+    )
 
     active = db.Column(db.Boolean, default=True)
 

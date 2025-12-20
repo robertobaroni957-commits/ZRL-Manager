@@ -33,9 +33,11 @@ def login():
         if user.role == "admin":
             return redirect(url_for("admin_bp.dashboard"))
         elif user.role == "moderator":
-            return redirect(url_for("moderator.dashboard"))
+            return redirect(url_for("admin_bp.dashboard"))
         elif user.role == "captain":
-            return redirect(url_for("captain.dashboard"))
+            return redirect(url_for("dashboard_captain.captain_dashboard"))
+        elif user.role == "user": # Handle simple user role
+            return redirect(url_for("rider.set_availability")) # Redirect to availability page
         else:
             flash("⚠️ Ruolo non riconosciuto", "warning")
             return redirect(url_for("auth.login"))

@@ -64,8 +64,15 @@ def import_wtrl_riders():
 
             team.name = team_json.get("name")
             team.jerseyimage = team_json.get("jerseyimage")
-            team.category = team_json.get("category") or competition.get("division") or (meta.get("division") or "").split()[-1] if (meta.get("division") or competition.get("division")) else None
-            team.division = meta.get("division") or competition.get("division")
+
+            # Mappatura corretta basata sul JSON fornito dall'utente:
+            # team.category (nel DB) deve essere competition.division (es. 'C')
+            # team.division (nel DB) deve essere meta.division (es. 'Open Shamrock League Division C')
+            team.category = competition.get("division")
+            if not team.category:
+                print(f"[WARNING] Categoria non trovata per il team: {team_json.get('name')} (TRC: {trc}). Dati JSON: competition={competition}, meta={meta}")
+            team.division = meta.get("division")
+
             team.division_number = extract_division_number(team.division)
             team.trc = trc
             team.wtrl_team_id = team_json.get("tttid") or team_json.get("teamid") or trc

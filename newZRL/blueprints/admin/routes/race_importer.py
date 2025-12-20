@@ -48,7 +48,7 @@ def ensure_wtrl_json_ready(season: str, class_id: str, race_number: int,
     last_response = None
     for attempt in range(1, max_retries + 1):
         try:
-            resp = requests.get(url, headers=HEADERS, cookies=wtrl_cookies, timeout=20)
+            resp = requests.get(url, headers=HEADERS, cookies=wtrl_cookies, timeout=30)
         except Exception as e:
             # rete/timeout: loggalo e ritenta
             current_app.logger.error(f"[ensure_wtrl_json_ready] attempt {attempt} network error: {e}")
@@ -97,7 +97,7 @@ def ensure_wtrl_league_json_ready(season: str, class_id: str, race_number: int,
     last_response = None
     for attempt in range(1, max_retries + 1):
         try:
-            resp = requests.get(url, headers=HEADERS, cookies=wtrl_cookies, timeout=20)
+            resp = requests.get(url, headers=HEADERS, cookies=wtrl_cookies, timeout=30)
         except Exception as e:
             # rete/timeout: loggalo e ritenta
             current_app.logger.error(f"[ensure_wtrl_league_json_ready] attempt {attempt} network error: {e}")

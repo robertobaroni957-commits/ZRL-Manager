@@ -1,39 +1,86 @@
 {% extends "base.html" %}
+{% block title %}Modifica Utente{% endblock %}
+
+{% block page_title %}
+<h1 class="fw-bold text-primary m-0">
+  <i class="bi bi-person-gear-fill me-2"></i>
+  Modifica Utente: {{ user.email }}
+</h1>
+</h1>
+{% endblock %}
+
 {% block content %}
-<div class="container mt-4">
-  <h2>✏️ Modifica Utente</h2>
+<div class="container py-2" style="max-width: 600px;">
 
-  <form method="POST">
-    <div class="mb-3">
-      <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email" name="email"
-             value="{{ user['email'] }}" required>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, msg in messages %}
+                <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show" role="alert">
+                    {{ msg }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password (lascia vuoto per non modificare)</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <div class="mb-3">
+            <label for="profile_id" class="form-label">Zwift Profile ID</label>
+            <input type="text" class="form-control" id="profile_id" name="profile_id" value="{{ user.profile_id }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="role" class="form-label">Ruolo</label>
+            <select class="form-select" id="role" name="role" required>
+                <option value="user" {% if user.role == 'user' %}selected{% endif %}>Utente</option>
+                <option value="captain" {% if user.role == 'captain' %}selected{% endif %}>Capitano</option>
+                <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
+            </select>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="active" name="active" {% if user.active %}checked{% endif %}>
+            <label class="form-check-label" for="active">Attivo</label>
+        </div>
+        <button type="submit" class="btn btn-success">Salva Modifiche</button>
+        <a href="{{ url_for('admin_bp.list_users') }}" class="btn btn-secondary">Annulla</a>
+    </form>
+
+    {% if rider %}
+    <div class="card p-3 mt-4">
+        <h5 class="card-title">Disponibilità Rider: {{ rider.name }} (ID: {{ rider.profile_id }})</h5>
+        {% if rider_availability %}
+            <p><strong>Note:</strong> {{ rider_availability.notes or 'Nessuna' }}</p>
+            <h6>Orari di Disponibilità:</h6>
+            <ul class="list-group list-group-flush">
+                {% for day, times in rider_availability.availability_data.items() %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ day|capitalize }}
+                        {% if times %}
+                            <span class="badge bg-primary rounded-pill">{{ times.start }} - {{ times.end }}</span>
+                        {% else %}
+                            <span class="badge bg-secondary rounded-pill">Non Disponibile</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-muted">Nessuna disponibilità impostata per questo rider.</p>
+        {% endif %}
+        <div class="mt-3 text-end">
+            <a href="{{ url_for('rider.set_availability') }}" class="btn btn-sm btn-outline-primary">Modifica Disponibilità (come Rider)</a>
+        </div>
     </div>
-
-    <div class="mb-3">
-      <label for="role" class="form-label">Ruolo</label>
-      <select name="role" class="form-select form-select-sm">
-  <option value="Amministratore" {% if user.role == 'admin' %}selected{% endif %}>Amministratore</option>
-  <option value="Moderatore" {% if user.role == 'moderator' %}selected{% endif %}>Moderatore</option>
-  <option value="Capitano" {% if user.role == 'captain' %}selected{% endif %}>Capitano</option>
-</select>
-
+    {% else %}
+    <div class="alert alert-info mt-4">
+        Nessun WTRL Rider associato a questo utente.
     </div>
-
-    <div class="mb-3">
-      <label for="team_id" class="form-label">Team ID</label>
-      <input type="text" class="form-control" id="team_id" name="team_id"
-             value="{{ user['team_id'] or '' }}">
-    </div>
-
-    <div class="form-check mb-3">
-      <input class="form-check-input" type="checkbox" id="active" name="active" value="1"
-             {% if user['active'] == 1 %}checked{% endif %}>
-      <label class="form-check-label" for="active">Attivo</label>
-    </div>
-
-    <button type="submit" class="btn btn-primary">💾 Salva modifiche</button>
-    <a href="{{ url_for('admin_manage_users.list_users') }}" class="btn btn-secondary">⬅️ Indietro</a>
-  </form>
+    {% endif %}
 </div>
 {% endblock %}

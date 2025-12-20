@@ -4,6 +4,7 @@ from newZRL import db
 from newZRL.models import Team, WTRL_Rider, RaceLineup
 from newZRL.models.race_results import RaceResultsTeam, RoundStanding
 from sqlalchemy import func
+from utils.auth_decorators import require_roles # Import require_roles
 
 from ..bp import admin_bp
 
@@ -12,6 +13,7 @@ Rider = WTRL_Rider
 
 @admin_bp.route("/reports/")
 @login_required
+@require_roles(["admin", "captain"])
 def index():
     # ---------------------------
     # Filtri GET
@@ -138,7 +140,7 @@ def index():
             n_riders = db.session.query(Rider).filter(Rider.team_trc == t.trc).count()
             rows.append({
                 "team": t.name,
-                "category": t.category,
+                "category": t.category or "N/A",
                 "n_riders": n_riders,
                 "captain": t.captain_name or ""
             })
@@ -160,7 +162,8 @@ def index():
                 for r in riders:
                     lineup_dict[t.name].append({
                         "profile_id": r.profile_id,
-                        "category": t.category or "OTHER",
+                        "rider_name": r.name, # Add rider's name here
+                        "category": r.category or "OTHER",
                         "status": r.member_status or "N/A",
                         "signedup": getattr(r, "signedup", ""),
                         "riderpoints": r.riderpoints,
@@ -180,7 +183,7 @@ def index():
                 WTRL_Rider.name.label("rider_name"),
                 Team.name.label("team_name"),
                 Team.category.label("team_category")
-            ).join(WTRL_Rider, RaceLineup.profile_id == WTRL_Rider.profile_id)\
+            ).join(WTRL_Rider, RaceLineup.wtrl_rider_id == WTRL_Rider.id)\
              .outerjoin(Team, Team.trc == WTRL_Rider.team_trc)\
              .filter(RaceLineup.race_date == race_date)
 

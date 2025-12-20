@@ -1,6 +1,9 @@
 from flask import Blueprint, url_for, redirect, render_template
 from flask_login import current_user
 from flask import has_request_context
+from newZRL.blueprints.admin.bp import admin_bp # Import admin_bp
+from newZRL.blueprints.captain.routes import captain_bp # Import captain_bp
+
 main_bp = Blueprint("main", __name__)
 
 def redirect_based_on_role():
@@ -14,8 +17,7 @@ def redirect_based_on_role():
             from newZRL.blueprints.admin.bp import admin_bp
             return redirect(url_for("admin_bp.dashboard"))
         elif role == "captain":
-            from newZRL.blueprints.admin.teams.bp import admin_teams_bp
-            return redirect(url_for("admin_teams_bp.manage_teams"))
+            return redirect(url_for("dashboard_captain.captain_dashboard"))
     return None
 
 

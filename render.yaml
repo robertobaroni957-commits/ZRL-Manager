@@ -9,7 +9,6 @@ services:
       - key: FLASK_CONFIG
         value: production
       - key: SECRET_KEY
-      - key: PROD_DATABASE_URL
 
   - type: db
     name: zrl-db

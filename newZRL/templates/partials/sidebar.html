@@ -4,7 +4,9 @@
 {% if user_id and role %}
 {% set sidebar_items = [
     {'label': 'Dashboard', 'endpoint': 'admin_bp.dashboard', 'icon': 'bi-bar-chart-fill'},
-    {'label': 'Report', 'endpoint': 'admin_bp.index', 'icon': 'bi-file-earmark-bar-graph', 'roles': ['admin','moderator']},
+    {'label': 'Imposta Disponibilità', 'endpoint': 'rider.set_availability', 'icon': 'bi-calendar-check-fill', 'roles': ['user', 'captain']},
+    {'label': 'Gestione Utenti', 'endpoint': 'admin_bp.list_users', 'icon': 'bi-people-fill', 'roles': ['admin']},
+    {'label': 'Report', 'endpoint': 'admin_bp.index', 'icon': 'bi-file-earmark-bar-graph', 'roles': ['admin','captain']},
     {'label': 'Importazioni', 'icon': 'bi-arrow-repeat', 'roles': ['admin','moderator'],
         'children': [
             {'label': 'Importa WTRL (Teams + Riders)', 'endpoint': 'admin_bp.import_wtrl_teams_and_riders_from_api'},

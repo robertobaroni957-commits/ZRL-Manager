@@ -1,227 +1,209 @@
 {
-  "meta": {
-    "trc": 75150,
-    "division": "Open Shamrock League Division C1",
-    "racingSeason": "2025/26",
-    "team": {
-      "tttid": 13732,
-      "teamid": 13732,
-      "name": "Team INOX AAB",
-      "jerseyname": "Team INOX",
-      "jerseyimage": "INOX2025_thumb",
-      "recruiting": false,
-      "isdev": false
-    },
-    "nextRace": {
-      "teamstart": null,
-      "raceFormat": ""
-    },
-    "competition": {
-      "wtrlid": "ZRL",
-      "season": 17,
-      "sportsYear": 2025,
-      "roundnumber": 1,
-      "division": "C",
-      "class": "2370C10",
-      "status": "ACTIVE",
-      "registered": [
-        "1",
-        "2",
-        "3",
-        "4"
-      ]
-    },
-    "memberCount": 9,
-    "membersRemaining": 3,
-    "administrators": {
-      "registerer": {
-        "firstName": "Francesco",
-        "lastName": "Ravasi",
-        "profileId": 3617605,
-        "userId": "7af2a7ad-02d4-48a2-b213-5e284962d12a"
-      },
-      "captain": {
-        "firstName": "Nicola",
-        "lastName": "Mancini",
-        "profileId": 1237268,
-        "userId": "6ab80ffd-ddca-4b1f-82d8-1a481a9418da"
-      },
-      "managers": [
-        {
-          "firstName": "Street",
-          "lastName": "Hawk",
-          "profileId": 7072727,
-          "userId": "6075bb3f-add5-45c5-a355-096458c4917a"
+    "meta": {
+        "trc": 75150,
+        "division": "Open Shamrock League Division C",
+        "racingSeason": "2025/26",
+        "team": {
+            "tttid": 13732,
+            "teamid": 13732,
+            "name": "Team INOX AAB",
+            "jerseyname": "Team INOX",
+            "jerseyimage": "INOX2025_thumb",
+            "recruiting": false,
+            "isdev": false
+        },
+        "nextRace": {
+            "teamstart": null,
+            "raceFormat": ""
+        },
+        "competition": {
+            "wtrlid": "ZRL",
+            "season": 18,
+            "sportsYear": 2025,
+            "roundnumber": 1,
+            "division": "C",
+            "class": "2370C0",
+            "status": "REGISTERED",
+            "registered": [
+                "1",
+                "2",
+                "3",
+                "4"
+            ]
+        },
+        "memberCount": 8,
+        "membersRemaining": 4,
+        "administrators": {
+            "registerer": {
+                "firstName": "Francesco",
+                "lastName": "Ravasi",
+                "profileId": 3617605,
+                "userId": "7af2a7ad-02d4-48a2-b213-5e284962d12a"
+            },
+            "captain": {
+                "firstName": "Nicola",
+                "lastName": "Mancini",
+                "profileId": 1237268,
+                "userId": "6ab80ffd-ddca-4b1f-82d8-1a481a9418da"
+            },
+            "managers": [
+                {
+                    "firstName": "Street",
+                    "lastName": "Hawk",
+                    "profileId": 7072727,
+                    "userId": "6075bb3f-add5-45c5-a355-096458c4917a"
+                }
+            ]
         }
-      ]
-    }
-  },
-  "permissions": {
-    "id": 7072727,
-    "isAdmin": true
-  },
-  "riders": [
-    {
-      "tmuid": 383453,
-      "name": "Andy Jones",
-      "avatar": "/uploads/profile_picture/1701113009_IMG_0468.jpeg",
-      "memberStatus": "MEMBER",
-      "signedup": false,
-      "category": "B",
-      "zftp": 3.05,
-      "zftpw": 229,
-      "zmapw": 310,
-      "zmap": 4.13,
-      "riderpoints": 0,
-      "teams": 0,
-      "appearancesRound": 2,
-      "appearancesSeason": 3,
-      "profileId": 1120055,
-      "userId": "b4f015a8-9975-417a-b525-451f76f4b048"
     },
-    {
-      "tmuid": 383454,
-      "name": "Fabio Bertoldi",
-      "avatar": "https://static-cdn.zwift.com/prod/profile/27502d77-495850",
-      "memberStatus": "MEMBER",
-      "signedup": false,
-      "category": "C",
-      "zftp": 3.1,
-      "zftpw": 248,
-      "zmapw": 310,
-      "zmap": 3.88,
-      "riderpoints": 0,
-      "teams": 0,
-      "appearancesRound": 1,
-      "appearancesSeason": 4,
-      "profileId": 966756,
-      "userId": "319a2769-4c46-428a-b9fd-bf2ef3194d3a"
+    "permissions": {
+        "id": 7072727,
+        "isAdmin": true
     },
-    {
-      "tmuid": 383452,
-      "name": "luca briccoli",
-      "avatar": "https://static-cdn.zwift.com/prod/profile/c9510342-1007518",
-      "memberStatus": "MEMBER",
-      "signedup": false,
-      "category": "C",
-      "zftp": 3.35,
-      "zftpw": 247,
-      "zmapw": 291,
-      "zmap": 3.95,
-      "riderpoints": 0,
-      "teams": 0,
-      "appearancesRound": 3,
-      "appearancesSeason": 1,
-      "profileId": 1842490,
-      "userId": "8ab3e454-7d18-49e7-9309-28255434ec03"
-    },
-    {
-      "tmuid": 383460,
-      "name": "Luca Adamo",
-      "avatar": "https://static-cdn.zwift.com/prod/profile/addfd74c-3184703",
-      "memberStatus": "MEMBER",
-      "signedup": false,
-      "category": "C",
-      "zftp": 2.78,
-      "zftpw": 236,
-      "zmapw": 272,
-      "zmap": 3.2,
-      "riderpoints": 0,
-      "teams": 0,
-      "appearancesRound": 1,
-      "appearancesSeason": 3,
-      "profileId": 4369191,
-      "userId": "41c47c85-791e-4e93-925f-7ba1ce497394"
-    },
-    {
-      "tmuid": 396530,
-      "name": "Luca Bille",
-      "avatar": "https://static-cdn.zwift.com/prod/profile/e9ecfb8a-3070922",
-      "memberStatus": "MEMBER",
-      "signedup": false,
-      "category": "C",
-      "zftp": 3.28,
-      "zftpw": 210,
-      "zmapw": 242,
-      "zmap": 3.78,
-      "riderpoints": 0,
-      "teams": 0,
-      "appearancesRound": 3,
-      "appearancesSeason": 0,
-      "profileId": 6801312,
-      "userId": "62ec922a-7951-4a0c-b294-51b8938e3817"
-    },
-    {
-      "tmuid": 383461,
-      "name": "Mario Cavallaro",
-      "avatar": "https://static-cdn.zwift.com/prod/profile/93b07a23-1459691",
-      "memberStatus": "MEMBER",
-      "signedup": false,
-      "category": "C",
-      "zftp": 3.23,
-      "zftpw": 263,
-      "zmapw": 309,
-      "zmap": 3.8,
-      "riderpoints": 0,
-      "teams": 0,
-      "appearancesRound": 3,
-      "appearancesSeason": 2,
-      "profileId": 2690375,
-      "userId": "b5ce339e-e11b-4e9f-939a-76d7d5d8ec81"
-    },
-    {
-      "tmuid": 383456,
-      "name": "Martino Sabia",
-      "avatar": "/uploads/profile_picture/1738105456_ezu-BW.JPG",
-      "memberStatus": "MEMBER",
-      "signedup": false,
-      "category": "C",
-      "zftp": 3.35,
-      "zftpw": 302,
-      "zmapw": 337,
-      "zmap": 3.74,
-      "riderpoints": 0,
-      "teams": 0,
-      "appearancesRound": 2,
-      "appearancesSeason": 4,
-      "profileId": 900612,
-      "userId": "7a706598-9e0d-4178-b88a-d2fe58c7a8fd"
-    },
-    {
-      "tmuid": 383451,
-      "name": "Nicola Mancini",
-      "avatar": "/uploads/profile_picture/1705991621_dettaglio&nome.jpg",
-      "memberStatus": "MEMBER",
-      "signedup": false,
-      "category": "C",
-      "zftp": 3.07,
-      "zftpw": 227,
-      "zmapw": 268,
-      "zmap": 3.62,
-      "riderpoints": 0,
-      "teams": 0,
-      "appearancesRound": 1,
-      "appearancesSeason": 0,
-      "profileId": 1237268,
-      "userId": "6ab80ffd-ddca-4b1f-82d8-1a481a9418da"
-    },
-    {
-      "tmuid": 383459,
-      "name": "Simone Oppezzo",
-      "avatar": "https://static-cdn.zwift.com/prod/profile/3d5b66e3-263432",
-      "memberStatus": "REMOVED-CATEGORY",
-      "signedup": false,
-      "category": "B",
-      "zftp": 3.33,
-      "zftpw": 227,
-      "zmapw": 283,
-      "zmap": 4.15,
-      "riderpoints": 0,
-      "teams": 0,
-      "appearancesRound": 1,
-      "appearancesSeason": 5,
-      "profileId": 475715,
-      "userId": "0af9f313-aebc-443a-a7e8-a1c41d1e36d0"
-    }
-  ]
+    "riders": [
+        {
+            "tmuid": 410690,
+            "name": "claudio ubertini",
+            "avatar": "https://static-cdn.zwift.com/prod/profile/b82ee113-1614260",
+            "memberStatus": "MEMBER",
+            "signedup": false,
+            "category": "C",
+            "zftp": 3.11,
+            "zftpw": 218,
+            "zmapw": 267,
+            "zmap": 3.81,
+            "riderpoints": 0,
+            "teams": 0,
+            "appearancesRound": 0,
+            "appearancesSeason": 2,
+            "profileId": 3059451,
+            "userId": "ecb969cd-9849-4eaa-a82b-7347c4eb6885"
+        },
+        {
+            "tmuid": 410685,
+            "name": "Fabio Bertoldi",
+            "avatar": "https://static-cdn.zwift.com/prod/profile/27502d77-495850",
+            "memberStatus": "MEMBER",
+            "signedup": false,
+            "category": "C",
+            "zftp": 3.18,
+            "zftpw": 254,
+            "zmapw": 310,
+            "zmap": 3.88,
+            "riderpoints": 0,
+            "teams": 0,
+            "appearancesRound": 0,
+            "appearancesSeason": 8,
+            "profileId": 966756,
+            "userId": "319a2769-4c46-428a-b9fd-bf2ef3194d3a"
+        },
+        {
+            "tmuid": 410683,
+            "name": "luca briccoli",
+            "avatar": "https://static-cdn.zwift.com/prod/profile/c9510342-1007518",
+            "memberStatus": "MEMBER",
+            "signedup": false,
+            "category": "C",
+            "zftp": 3.34,
+            "zftpw": 245,
+            "zmapw": 291,
+            "zmap": 3.96,
+            "riderpoints": 0,
+            "teams": 0,
+            "appearancesRound": 0,
+            "appearancesSeason": 7,
+            "profileId": 1842490,
+            "userId": "8ab3e454-7d18-49e7-9309-28255434ec03"
+        },
+        {
+            "tmuid": 410687,
+            "name": "Luca Adamo",
+            "avatar": "https://static-cdn.zwift.com/prod/profile/addfd74c-3184703",
+            "memberStatus": "MEMBER",
+            "signedup": false,
+            "category": "C",
+            "zftp": 2.78,
+            "zftpw": 236,
+            "zmapw": 272,
+            "zmap": 3.2,
+            "riderpoints": 0,
+            "teams": 0,
+            "appearancesRound": 0,
+            "appearancesSeason": 4,
+            "profileId": 4369191,
+            "userId": "41c47c85-791e-4e93-925f-7ba1ce497394"
+        },
+        {
+            "tmuid": 410689,
+            "name": "Luca Bille",
+            "avatar": "https://static-cdn.zwift.com/prod/profile/e9ecfb8a-3070922",
+            "memberStatus": "MEMBER",
+            "signedup": false,
+            "category": "C",
+            "zftp": 3.26,
+            "zftpw": 213,
+            "zmapw": 265,
+            "zmap": 4.05,
+            "riderpoints": 0,
+            "teams": 0,
+            "appearancesRound": 0,
+            "appearancesSeason": 6,
+            "profileId": 6801312,
+            "userId": "62ec922a-7951-4a0c-b294-51b8938e3817"
+        },
+        {
+            "tmuid": 410688,
+            "name": "Mario Cavallaro",
+            "avatar": "https://static-cdn.zwift.com/prod/profile/93b07a23-1459691",
+            "memberStatus": "MEMBER",
+            "signedup": false,
+            "category": "B",
+            "zftp": 3.55,
+            "zftpw": 286,
+            "zmapw": 330,
+            "zmap": 4.1,
+            "riderpoints": 0,
+            "teams": 0,
+            "appearancesRound": 0,
+            "appearancesSeason": 8,
+            "profileId": 2690375,
+            "userId": "b5ce339e-e11b-4e9f-939a-76d7d5d8ec81"
+        },
+        {
+            "tmuid": 410686,
+            "name": "Martino Sabia",
+            "avatar": "/uploads/profile_picture/1738105456_ezu-BW.JPG",
+            "memberStatus": "MEMBER",
+            "signedup": false,
+            "category": "C",
+            "zftp": 3.35,
+            "zftpw": 302,
+            "zmapw": 337,
+            "zmap": 3.74,
+            "riderpoints": 0,
+            "teams": 0,
+            "appearancesRound": 0,
+            "appearancesSeason": 9,
+            "profileId": 900612,
+            "userId": "7a706598-9e0d-4178-b88a-d2fe58c7a8fd"
+        },
+        {
+            "tmuid": 410682,
+            "name": "Nicola Mancini",
+            "avatar": "/uploads/profile_picture/1705991621_dettaglio&nome.jpg",
+            "memberStatus": "MEMBER",
+            "signedup": false,
+            "category": "C",
+            "zftp": 3.16,
+            "zftpw": 234,
+            "zmapw": 266,
+            "zmap": 3.59,
+            "riderpoints": 0,
+            "teams": 0,
+            "appearancesRound": 0,
+            "appearancesSeason": 1,
+            "profileId": 1237268,
+            "userId": "6ab80ffd-ddca-4b1f-82d8-1a481a9418da"
+        }
+    ]
 }

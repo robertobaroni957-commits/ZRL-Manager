@@ -10,3 +10,5 @@ from .routes import wtrl_teams_import
 from .routes import race_importer
 from .routes import routes_import
 from .routes import import_wtrl_season
+from .routes import import_status
+from .routes import users

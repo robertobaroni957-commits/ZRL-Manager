@@ -73,9 +73,7 @@
 
             <div class="mt-2 d-flex justify-content-between align-items-center small">
               <span class="text-muted">ID: {{ rider.profile_id }}</span>
-              {% if is_selected %}
-                <span class="badge bg-success">✓</span>
-              {% endif %}
+              <span id="badge-{{ rider.profile_id }}" class="badge bg-success" style="display: {% if is_selected %}inline-block{% else %}none{% endif %};">✓</span>
             </div>
           </label>
         </div>
@@ -208,6 +206,10 @@ document.addEventListener('DOMContentLoaded', () => {
         cb.addEventListener('change', () => {
             card.classList.toggle('selected', cb.checked);
             updateCounter();
+            const badge = document.getElementById(`badge-${cb.value}`);
+            if (badge) {
+                badge.style.display = cb.checked ? 'inline-block' : 'none';
+            }
         });
         
         // Inizializza correttamente la classe (per i rider già selezionati al caricamento)

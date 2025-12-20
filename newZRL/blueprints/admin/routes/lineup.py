@@ -1,6 +1,7 @@
 from ..bp import admin_bp
 from flask import render_template, request, flash, redirect, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user # Import current_user
+from newZRL.models.user import User # Import User model
 from newZRL import db
 from datetime import datetime, date
 from sqlalchemy.exc import IntegrityError
@@ -35,6 +36,14 @@ def parse_date(value):
 @require_roles(["admin", "captain"])
 @login_required
 def manage_lineup(trc, race_date):
+    # --- Ownership check for Captains ---
+    if current_user.is_authenticated and current_user.role == "captain":
+        captain_team = Team.query.filter_by(captain_profile_id=current_user.profile_id).first()
+        if not captain_team or captain_team.trc != int(trc):
+            flash("❌ Non hai i permessi per gestire la lineup di questo team.", "danger")
+            # Redirect to captain's own dashboard or a general admin page
+            return redirect(url_for('admin_bp.dashboard')) # Redirect to their own dashboard
+
     # --- Team ---
     try:
         trc_int = int(trc)
@@ -75,10 +84,10 @@ def manage_lineup(trc, race_date):
             else:
                 conflicting = []
                 for rid in selected_riders:
-                    conflict = RaceLineup.query.filter(
+                    conflict = RaceLineup.query.join(WTRL_Rider).filter(
                         RaceLineup.race_date == race_date_obj,
-                        RaceLineup.profile_id == rid,
-                        RaceLineup.team_trc != trc_int
+                        WTRL_Rider.profile_id == rid,
+                        WTRL_Rider.team_trc != trc_int
                     ).first()
                     if conflict:
                         r = WTRL_Rider.query.filter_by(profile_id=rid).first()
@@ -88,21 +97,35 @@ def manage_lineup(trc, race_date):
                     flash(f"❌ Rider già assegnati ad altri team: {', '.join(conflicting)}", "danger")
                 else:
                     try:
-                        existing = RaceLineup.query.filter_by(race_id=race_id).all()
-                        existing_ids = {int(rl.profile_id) for rl in existing}
+                        # First, get existing profile IDs directly
+                        existing_profile_ids_in_db = {
+                            int(p_id[0]) for p_id in db.session.query(WTRL_Rider.profile_id)
+                            .join(RaceLineup)
+                            .filter(RaceLineup.race_id == race_id)
+                            .all()
+                        }
+
+                        # Get the actual RaceLineup objects that correspond to these profile_ids
+                        # We need the RaceLineup objects themselves to delete them
+                        existing_lineups = RaceLineup.query.join(WTRL_Rider).filter(
+                            RaceLineup.race_id == race_id
+                        ).all()
 
                         # Rimuovo quelli non selezionati
-                        for rl in existing:
-                            if int(rl.profile_id) not in selected_riders:
-                                db.session.delete(rl)
+                        for rl_obj in existing_lineups:
+                            # Access rl_obj.rider.profile_id safely
+                            if rl_obj.rider is not None and int(rl_obj.rider.profile_id) not in selected_riders:
+                                db.session.delete(rl_obj)
+
+                        # existing_ids for adding new ones will be the set of profile_ids already in the DB
+                        existing_ids = existing_profile_ids_in_db
 
                         # Aggiungo i nuovi
                         for rid in selected_riders:
                             if rid not in existing_ids:
                                 db.session.add(RaceLineup(
-                                    team_trc=trc_int,
                                     race_date=race_date_obj,
-                                    profile_id=rid,
+                                    wtrl_rider_id=f"{trc_int}/{rid}",
                                     race_id=race_id
                                 ))
                         db.session.commit()
@@ -135,12 +158,12 @@ def manage_lineup(trc, race_date):
         WTRL_Rider.member_status != "REMOVED-CATEGORY"
     ).order_by(WTRL_Rider.name.asc()).all()
 
-    selected_ids = {int(rl.profile_id) for rl in RaceLineup.query.filter_by(race_id=race_id).all()}
+    selected_ids = {int(p_id[0]) for p_id in db.session.query(WTRL_Rider.profile_id).join(RaceLineup).filter(RaceLineup.race_id == race_id).all()}
     busy_riders = {
-        int(rl.profile_id) for rl in RaceLineup.query.filter(
+        int(rl.rider.profile_id) for rl in RaceLineup.query.join(WTRL_Rider).filter(
             RaceLineup.race_date == race_date_obj,
-            RaceLineup.team_trc != trc_int
-        ).all()
+            WTRL_Rider.team_trc != trc_int
+        ).all() if rl.rider is not None
     }
 
     return render_template(

@@ -1,5 +1,6 @@
 from datetime import datetime
 from newZRL import db
+from newZRL.models.rider_availability import RiderAvailability # Import RiderAvailability
 
 class WTRL_Rider(db.Model):
     __tablename__ = "wtrl_riders"
@@ -27,3 +28,6 @@ class WTRL_Rider(db.Model):
 
     # Relazione con Team
     team = db.relationship("Team", back_populates="wtrl_riders")
+
+    # Relazione con RiderAvailability
+    availability = db.relationship("RiderAvailability", back_populates="rider", uselist=False, lazy=True)
