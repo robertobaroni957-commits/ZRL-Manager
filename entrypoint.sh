@@ -27,6 +27,9 @@ fi
 
 # Run database migrations
 echo "Running database migrations..."
+echo "--- PRINTING ALL ENV VARS ---"
+printenv
+echo "--- END OF ENV VARS ---"
 export ALEMBIC_CONFIG=./alembic.ini # Explicitly tell Alembic where to find alembic.ini
 python run_migrations.py # Use 'python' instead of 'py'
 echo "Database migrations complete."
