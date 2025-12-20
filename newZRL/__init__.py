@@ -90,6 +90,11 @@ def create_app(config_name="development"):
     migrate.init_app(app, db) # Initialize Migrate with the app and db
     csrf.init_app(app) # Initialize CSRFProtect with the app
 
+    @app.context_processor
+    def inject_csrf_token():
+        from flask_wtf.csrf import generate_csrf
+        return dict(csrf_token=generate_csrf)
+
     # Chiude la sessione del database al termine di ogni richiesta
     @app.teardown_appcontext
     def shutdown_session(exception=None):
