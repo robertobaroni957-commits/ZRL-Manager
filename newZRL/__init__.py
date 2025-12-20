@@ -10,6 +10,7 @@ from flask_cors import CORS
 from flasgger import Flasgger
 from flask_migrate import Migrate # Import Flask-Migrate
 from flask_wtf.csrf import CSRFProtect # Import Flask-WTF CSRFProtect
+from werkzeug.middleware.proxy_fix import ProxyFix # Add for Render Proxy
 
 # -----------------------------
 # Inizializza estensioni
