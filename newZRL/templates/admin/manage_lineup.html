@@ -41,7 +41,7 @@
   <!-- Form lineup -->
   <form method="POST" id="lineupForm" class="mb-3">
     <input type="hidden" name="action" value="save_lineup">
-    {{ csrf() }}
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
     <div class="row g-2">
       {% for rider in riders %}
