@@ -108,6 +108,9 @@ def create_app(config_name="development"):
     @app.errorhandler(CSRFError)
     def handle_csrf_error(e):
         logger.warning(f"CSRF Error: {e.description} for request {request.path}")
+        logger.warning(f"  Referrer: {request.referrer}")
+        logger.warning(f"  Form keys: {list(request.form.keys()) if request.form else 'No form data'}")
+        logger.warning(f"  User Agent: {request.headers.get('User-Agent')}")
         if request.accept_mimetypes.accept_json and not request.accept_mimetypes.accept_html:
             return jsonify({'status': 'error', 'message': e.description}), 400
         return render_template('400.html', message=e.description), 400
