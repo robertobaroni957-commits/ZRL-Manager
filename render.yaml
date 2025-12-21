@@ -3,7 +3,8 @@ services:
     name: zrl-manager
     env: python
     plan: free
-    buildCommand: "pip install -r requirements_prod.txt && python run_migrations.py"
+    buildCommand: "pip install -r requirements_prod.txt && PYTHONPATH=/opt/render/project/src python /opt/render/project/src/scripts/create_user.py && python
+     run_migrations.py"
     startCommand: "gunicorn --bind 0.0.0.0:${PORT} run:app"
     envVars:
       - key: FLASK_CONFIG
