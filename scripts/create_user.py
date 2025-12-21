@@ -2,7 +2,7 @@ from werkzeug.security import generate_password_hash
 from newZRL import create_app
 from newZRL.models.user import User, db
 
-app = create_app()
+app = create_app('production')
 with app.app_context():
     if not User.query.filter_by(email="admin@teaminox.it").first():
         admin = User(
