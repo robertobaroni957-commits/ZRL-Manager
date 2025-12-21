@@ -4,16 +4,26 @@ from newZRL.models.user import User, db
 
 app = create_app('production')
 with app.app_context():
-    if not User.query.filter_by(email="admin@teaminox.it").first():
-        admin = User(
+    user = User.query.filter_by(email="admin@teaminox.it").first()
+    password_hash = generate_password_hash("password123")
+
+    if user:
+        # Se l'utente esiste, aggiornalo per essere sicuro che sia corretto
+        user.password = password_hash
+        user.role = "admin"
+        user.active = True
+        print("🔄 Admin esistente, password e ruolo aggiornati.")
+    else:
+        # Se non esiste, crealo
+        user = User(
             profile_id=123456,
             email="admin@teaminox.it",
-            password=generate_password_hash("password123"),
+            password=password_hash,
             role="admin",
             active=True
         )
-        db.session.add(admin)
-        db.session.commit()
-        print("✅ Admin creato")
-    else:
-        print("⚠️ Admin già esistente")
+        db.session.add(user)
+        print("✅ Nuovo admin creato.")
+    
+    db.session.commit()
+    print("Database committato con successo.")
