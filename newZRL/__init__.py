@@ -56,6 +56,9 @@ def create_app(config_name="development"):
     logger.debug(f"Session Cookie Domain: {app.config.get('SESSION_COOKIE_DOMAIN')}")
     logger.debug(f"Session Cookie Samesite: {app.config.get('SESSION_COOKIE_SAMESITE')}")
     
+    # Apply ProxyFix for deployment behind a reverse proxy like Render
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_port=1, x_prefix=1)
+
     # Ensure WTF_CSRF_ENABLED is True for Flask-WTF CSRF protection
     app.config["WTF_CSRF_ENABLED"] = True
 
