@@ -10,7 +10,7 @@ from werkzeug.security import generate_password_hash
 from ..bp import admin_bp
 from utils.auth_decorators import require_roles
 from newZRL.forms import UserForm # Import UserForm
-from wtforms.validators import DataRequired, Length # Import DataRequired and Length
+from wtforms.validators import DataRequired, Length, Optional # Import DataRequired and Length, Optional
 
 import logging
 logger = logging.getLogger(__name__)
