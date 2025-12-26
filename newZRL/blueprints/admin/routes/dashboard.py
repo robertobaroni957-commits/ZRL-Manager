@@ -40,21 +40,28 @@ def dashboard():
             teams = []
             flash("Non sei assegnato a nessun team come capitano.", "warning")
     else:
-        # For admins, load all teams and their captains efficiently
-        teams = Team.query.options(joinedload(Team.captain_user)).order_by(Team.name).all()
+        # For admins, load all teams
+        teams = Team.query.order_by(Team.name).all()
 
-    # Pre-calculation: lineup present and next race for each team
+    # Efficiently pre-load all captains for the displayed teams
+    captain_ids = {t.captain_profile_id for t in teams if t.captain_profile_id}
+    if captain_ids:
+        captains = User.query.filter(User.profile_id.in_(captain_ids)).all()
+        captain_map = {c.profile_id: c for c in captains}
+    else:
+        captain_map = {}
+
+    # Pre-calculation: lineup present, captain name, and next race for each team
     for t in teams:
         # Has at least one registered lineup?
-        # Uses the numeric team_trc column without string join
         t.has_lineup = RaceLineup.query.join(WTRL_Rider).filter(WTRL_Rider.team_trc == t.trc).first() is not None
 
-        # Use the pre-loaded captain_user relationship to get the captain's name
-        if t.captain_user:
-            t.captain_name = t.captain_user.email.split('@')[0].capitalize()
+        # Find captain from the pre-loaded map
+        captain = captain_map.get(t.captain_profile_id)
+        if captain:
+            t.captain_name = captain.email.split('@')[0].capitalize()
         else:
             t.captain_name = "—"
-
 
         # Next scheduled race for the team
         t.next_race_date = get_next_race_date(t.trc)
