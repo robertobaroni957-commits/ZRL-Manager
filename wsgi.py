@@ -1,12 +1,6 @@
-import sys
+# wsgi.py
+from newZRL import create_app
 import os
 
-# --- ATTENZIONE: MODIFICA QUESTO PERCORSO ---
-# Imposta il percorso corretto della cartella del tuo progetto su PythonAnywhere
-# Sarà qualcosa come '/home/TuoNomeUtente/ZRL_MANAGER_V2.0'
-path = '/home/robario/ZRL-Manager'
-if path not in sys.path:
-    sys.path.insert(0, path)
-
-# Importa l'applicazione Flask
-from run import app as application
+# The FLASK_CONFIG environment variable will be set to 'production' on the deployment platform.
+application = create_app(os.getenv('FLASK_CONFIG', 'production'))
