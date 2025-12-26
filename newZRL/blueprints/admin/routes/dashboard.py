@@ -10,6 +10,7 @@ from newZRL.models.race_lineup import RaceLineup
 from newZRL.models.wtrl_rider import WTRL_Rider
 from newZRL.utils.race_utils import get_next_race_date
 from utils.auth_decorators import require_roles
+from sqlalchemy.orm import joinedload
 from newZRL.models.user import User # Import User model
 
 @admin_bp.route("/dashboard")
@@ -39,8 +40,8 @@ def dashboard():
             teams = []
             flash("Non sei assegnato a nessun team come capitano.", "warning")
     else:
-        # For admins, load all teams
-        teams = Team.query.order_by(Team.name).all()
+        # For admins, load all teams and their captains efficiently
+        teams = Team.query.options(joinedload(Team.captain_user)).order_by(Team.name).all()
 
     # Pre-calculation: lineup present and next race for each team
     for t in teams:
@@ -48,17 +49,11 @@ def dashboard():
         # Uses the numeric team_trc column without string join
         t.has_lineup = RaceLineup.query.join(WTRL_Rider).filter(WTRL_Rider.team_trc == t.trc).first() is not None
 
-        # Find captain via captain_profile_id (already part of Team object)
-        t.captain_name = "—"
-        if t.captain_profile_id:
-            # Check if current_user.profile_id matches t.captain_profile_id
-            # This is already handled by filtering `teams` above
-            if t.captain_profile_id == current_user.profile_id and current_user.role == "captain":
-                t.captain_name = current_user.email.split('@')[0].capitalize() # Display a more friendly name
-            else:
-                captain_user = User.query.filter_by(profile_id=t.captain_profile_id).first()
-                if captain_user:
-                    t.captain_name = captain_user.email.split('@')[0].capitalize()
+        # Use the pre-loaded captain_user relationship to get the captain's name
+        if t.captain_user:
+            t.captain_name = t.captain_user.email.split('@')[0].capitalize()
+        else:
+            t.captain_name = "—"
 
 
         # Next scheduled race for the team
